@@ -8,7 +8,6 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        /* جميع الأنماط السابقة كما هي */
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
         * {
             font-family: 'Cairo', sans-serif;
@@ -90,25 +89,6 @@
             backdrop-filter: blur(12px);
             border: 1px solid rgba(255, 255, 255, 0.3);
             border-radius: 1.5rem;
-        }
-        .whatsapp-float {
-            position: fixed;
-            bottom: 80px;
-            left: 20px;
-            z-index: 100;
-            background: #25D366;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .whatsapp-float:hover {
-            transform: scale(1.1);
         }
         .category-page {
             display: none;
@@ -267,16 +247,6 @@
             padding: 0 1.5rem;
             border-bottom: 2px solid rgba(245, 158, 11, 0.3);
         }
-        .footer-links a {
-            color: #64748b;
-            margin: 0 0.75rem;
-            text-decoration: none;
-            font-size: 0.75rem;
-            transition: 0.2s;
-        }
-        .footer-links a:hover {
-            color: #d97706;
-        }
         .brand-name {
             background: linear-gradient(135deg, #f59e0b, #d97706);
             -webkit-background-clip: text;
@@ -351,38 +321,8 @@
         .text-dark-light {
             color: #475569;
         }
-        .border-dark {
-            border-color: rgba(0, 0, 0, 0.1);
-        }
-        .bg-dark-light {
-            background: rgba(0, 0, 0, 0.05);
-        }
         .text-yellow-dark {
             color: #d97706;
-        }
-        .border-yellow-dark {
-            border-color: #d97706;
-        }
-        .sidebar a {
-            color: #1e293b;
-        }
-        .sidebar a:hover {
-            background: rgba(245, 158, 11, 0.1);
-        }
-        .sidebar .text-yellow-300 {
-            color: #d97706;
-        }
-        .sidebar .border-yellow-500 {
-            border-color: #d97706;
-        }
-        .user-detail-modal {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(20px);
-            border-radius: 1.5rem;
-            padding: 1.5rem;
-            max-width: 500px;
-            width: 100%;
-            margin: 1rem;
         }
         .whatsapp-input {
             background: rgba(255, 255, 255, 0.6);
@@ -415,216 +355,61 @@
         .whatsapp-icon-input input {
             padding-right: 45px;
         }
-        .toast {
-            position: fixed;
-            top: 20px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(0, 0, 0, 0.8);
-            color: white;
-            padding: 12px 24px;
-            border-radius: 1rem;
-            z-index: 9999;
-            display: none;
-            font-weight: 600;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            text-align: center;
-            max-width: 90%;
-        }
-        .toast.success {
-            background: rgba(34, 197, 94, 0.9);
-        }
-        .toast.error {
-            background: rgba(239, 68, 68, 0.9);
-        }
-        .toast.info {
-            background: rgba(59, 130, 246, 0.9);
-        }
-        .toast.show {
-            display: block;
-            animation: slideDown 0.3s ease;
-        }
-        @keyframes slideDown {
-            from {
-                transform: translateX(-50%) translateY(-20px);
-                opacity: 0;
-            }
-            to {
-                transform: translateX(-50%) translateY(0);
-                opacity: 1;
-            }
-        }
-        .search-input {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1rem;
-            padding: 0.5rem 1rem;
-            width: 100%;
-            color: #1e293b;
-            transition: 0.2s;
-        }
-        .search-input:focus {
-            outline: none;
-            border-color: #f59e0b;
-            background: rgba(255, 255, 255, 0.8);
-        }
-        .sort-select {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1rem;
-            padding: 0.5rem 1rem;
-            color: #1e293b;
-            transition: 0.2s;
-        }
-        .sort-select:focus {
-            outline: none;
-            border-color: #f59e0b;
-        }
-        .export-btn {
-            background: rgba(255, 255, 255, 0.6);
-            border: 1px solid rgba(255, 255, 255, 0.3);
-            border-radius: 1rem;
-            padding: 0.5rem 1rem;
-            color: #1e293b;
+        .auth-tab {
+            transition: all 0.2s;
             cursor: pointer;
-            transition: 0.2s;
         }
-        .export-btn:hover {
-            background: rgba(255, 255, 255, 0.8);
-        }
-        .g-recaptcha {
-            display: flex;
-            justify-content: center;
-            margin: 10px 0;
-        }
-        .admin-stats-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 0.5rem;
-        }
-        @media (min-width: 640px) {
-            .admin-stats-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
-        }
-        .stat-card {
-            background: rgba(255, 255, 255, 0.5);
-            padding: 0.75rem;
-            border-radius: 1rem;
-            text-align: center;
-        }
-        .stat-card .number {
-            font-size: 1.5rem;
-            font-weight: 900;
+        .auth-tab.active-tab {
             color: #d97706;
+            border-bottom: 3px solid #d97706;
         }
-        .stat-card .label {
-            font-size: 0.7rem;
-            color: #64748b;
-        }
-        @media (max-width: 480px) {
-            .stat-card .number {
-                font-size: 1.2rem;
-            }
-        }
-        .order-status {
-            display: inline-block;
+        .order-status-badge {
             padding: 0.25rem 0.75rem;
             border-radius: 9999px;
             font-size: 0.75rem;
             font-weight: 700;
         }
-        .order-status.pending {
+        .status-pending {
             background: #fef3c7;
             color: #d97706;
         }
-        .order-status.processing {
+        .status-processing {
             background: #dbeafe;
             color: #2563eb;
         }
-        .order-status.completed {
+        .status-completed {
             background: #d1fae5;
-            color: #059669;
+            color: #065f46;
         }
-        .order-status.failed {
+        .status-failed {
             background: #fee2e2;
             color: #dc2626;
         }
-        .order-status.shipped {
-            background: #e0e7ff;
-            color: #4f46e5;
+        .status-waiting-payment {
+            background: #fce4ec;
+            color: #e11d48;
         }
-        .tracking-timeline {
-            position: relative;
-            padding-right: 20px;
+        .otp-input {
+            letter-spacing: 8px;
+            font-size: 1.5rem;
+            text-align: center;
+            font-weight: bold;
         }
-        .tracking-timeline::before {
-            content: '';
-            position: absolute;
-            right: 5px;
-            top: 0;
-            bottom: 0;
-            width: 2px;
-            background: #e5e7eb;
+        .error-message {
+            color: #dc2626;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
         }
-        .tracking-step {
-            position: relative;
-            padding: 0.5rem 0;
-            padding-right: 20px;
-        }
-        .tracking-step::before {
-            content: '';
-            position: absolute;
-            right: -2px;
-            top: 50%;
-            transform: translateY(-50%);
-            width: 12px;
-            height: 12px;
-            border-radius: 50%;
-            background: #e5e7eb;
-            border: 2px solid white;
-        }
-        .tracking-step.active::before {
-            background: #f59e0b;
-            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
-        }
-        .tracking-step.completed::before {
-            background: #059669;
-        }
-        .tracking-step .step-label {
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: #1e293b;
-        }
-        .tracking-step .step-time {
-            font-size: 0.7rem;
-            color: #94a3b8;
-        }
-        .auth-tab.active-tab {
-            color: #d97706 !important;
-            border-bottom: 2px solid #d97706;
-        }
-        .auth-tab {
-            color: #475569;
-            border-bottom: 2px solid transparent;
-            transition: all 0.3s;
-            cursor: pointer;
-        }
-        .auth-tab:hover {
-            color: #1e293b;
-        }
-        #login-form,
-        #register-form,
-        #phone-form {
-            transition: all 0.3s ease;
+        .success-message {
+            color: #065f46;
+            font-size: 0.875rem;
+            margin-top: 0.25rem;
+            display: none;
         }
     </style>
 </head>
 <body>
-
-    <!-- Toast Notification -->
-    <div id="toast" class="toast"></div>
 
     <!-- شاشة تحذير WebView -->
     <div id="webview-warning" style="display: none; flex-direction: column; align-items: center; justify-content: center; min-height: 100vh; padding: 20px; background: #fef08a; text-align: center; position: fixed; top:0;left:0;right:0;bottom:0;z-index:20000; color: #1e293b;">
@@ -640,53 +425,88 @@
     </div>
 
     <!-- شاشة تسجيل الدخول -->
-    <div id="auth-screen" class="fixed inset-0 bg-white/60 backdrop-blur flex items-center justify-center p-6 z-40 hidden">
+    <div id="auth-screen" class="fixed inset-0 bg-white/60 backdrop-blur flex items-center justify-center p-6 z-40 hidden" style="overflow-y: auto;">
         <div class="glass w-full max-w-md p-8 rounded-3xl text-dark">
             <h1 class="text-4xl font-black text-center">
                 <span class="brand-name">MORRE</span> <span class="brand-name-white">STORE</span>
             </h1>
             <p class="text-center text-dark-light text-sm mb-6">متجر شامل للخدمات الرقمية</p>
-            <div class="flex gap-2 border-b border-dark/10 mb-6 overflow-x-auto">
-                <button class="auth-tab flex-1 py-2 text-center font-bold whitespace-nowrap active-tab" data-tab="login">تسجيل دخول</button>
-                <button class="auth-tab flex-1 py-2 text-center font-bold whitespace-nowrap" data-tab="register">إنشاء حساب</button>
-                <button class="auth-tab flex-1 py-2 text-center font-bold whitespace-nowrap" data-tab="phone">تسجيل برقم الجوال</button>
+            
+            <!-- تبويبات -->
+            <div class="flex gap-4 border-b border-dark/10 mb-6">
+                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light" data-tab="login" id="loginTab">تسجيل دخول</button>
+                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light" data-tab="register" id="registerTab">إنشاء حساب</button>
             </div>
 
-            <!-- تسجيل دخول بالبريد -->
+            <!-- نموذج تسجيل الدخول -->
             <div id="login-form" class="space-y-4">
-                <input type="email" id="login-email" placeholder="البريد الإلكتروني" dir="ltr">
-                <input type="password" id="login-password" placeholder="كلمة المرور" dir="ltr">
-                <button id="email-login-btn" class="w-full action-btn">تسجيل الدخول</button>
-                <button id="forgot-password-btn" class="w-full text-sm text-yellow-dark hover:text-yellow-600 font-bold">نسيت كلمة المرور؟</button>
-            </div>
-
-            <!-- إنشاء حساب -->
-            <div id="register-form" class="space-y-4 hidden">
-                <input type="text" id="reg-name" placeholder="الاسم الكامل">
-                <input type="email" id="reg-email" placeholder="البريد الإلكتروني" dir="ltr">
-                <input type="password" id="reg-password" placeholder="كلمة المرور (8 أحرف على الأقل)" dir="ltr">
-                <input type="password" id="reg-confirm-password" placeholder="تأكيد كلمة المرور" dir="ltr">
-                <button id="email-register-btn" class="w-full action-btn">إنشاء حساب</button>
-            </div>
-
-            <!-- تسجيل برقم الجوال -->
-            <div id="phone-form" class="space-y-4 hidden">
-                <div id="phone-auth-container">
-                    <input type="tel" id="phone-number" placeholder="رقم الجوال (مثال: 0912345678)" dir="ltr">
-                    <div id="recaptcha-phone-container"></div>
-                    <button id="phone-login-btn" class="w-full action-btn">إرسال رمز التفعيل</button>
-                    <div id="phone-verification" class="hidden mt-3">
-                        <input type="text" id="phone-otp" placeholder="أدخل رمز التفعيل" dir="ltr" maxlength="6">
-                        <button id="phone-verify-btn" class="w-full action-btn mt-2">تحقق</button>
-                    </div>
+                <div>
+                    <input type="email" id="login-email" placeholder="البريد الإلكتروني" dir="ltr" class="w-full">
+                    <div id="login-email-error" class="error-message"></div>
                 </div>
-                <button id="phone-whatsapp-btn" class="w-full action-btn-outline flex items-center justify-center gap-2">
-                    <i class="fab fa-whatsapp text-green-500"></i> تسجيل عبر واتساب
-                </button>
+                <div>
+                    <input type="password" id="login-password" placeholder="كلمة المرور" dir="ltr" class="w-full">
+                    <div id="login-password-error" class="error-message"></div>
+                </div>
+                
+                <!-- حقل رمز التحقق (يظهر عند الحاجة) -->
+                <div id="login-otp-container" style="display: none;">
+                    <div>
+                        <input type="text" id="login-otp" placeholder="أدخل رمز التحقق المرسل إلى بريدك" dir="ltr" class="w-full otp-input" maxlength="6">
+                        <div id="login-otp-error" class="error-message"></div>
+                    </div>
+                    <button id="resend-login-otp" class="text-sm text-yellow-dark hover:underline">إعادة إرسال الرمز</button>
+                </div>
+
+                <button id="email-login-btn" class="w-full action-btn">تسجيل الدخول</button>
+                <button id="send-login-otp-btn" class="w-full action-btn-outline" style="display: none;">إرسال رمز التحقق</button>
+                <button id="verify-login-otp-btn" class="w-full action-btn" style="display: none;">تحقق من الرمز</button>
+                
+                <div class="text-center">
+                    <a href="#" id="forgot-password-link" class="text-sm text-yellow-dark hover:underline">نسيت كلمة المرور؟</a>
+                </div>
             </div>
 
-            <div class="relative my-6"><div class="absolute inset-0 flex items-center"><div class="w-full border-t border-dark/10"></div></div><div class="relative flex justify-center text-xs"><span class="bg-white/60 px-2 text-dark-light">أو</span></div></div>
-            <button id="google-login-btn" class="w-full bg-white text-gray-800 py-3 rounded-xl font-bold flex items-center justify-center gap-2 border border-gray-200"><i class="fab fa-google"></i> دخول عبر جوجل</button>
+            <!-- نموذج إنشاء حساب -->
+            <div id="register-form" class="space-y-4 hidden">
+                <div>
+                    <input type="text" id="reg-name" placeholder="الاسم الكامل">
+                    <div id="reg-name-error" class="error-message"></div>
+                </div>
+                <div>
+                    <input type="email" id="reg-email" placeholder="البريد الإلكتروني" dir="ltr">
+                    <div id="reg-email-error" class="error-message"></div>
+                </div>
+                <div>
+                    <input type="password" id="reg-password" placeholder="كلمة المرور (8 أحرف على الأقل، تحتوي على أرقام)" dir="ltr">
+                    <div id="reg-password-error" class="error-message"></div>
+                </div>
+                <div>
+                    <input type="password" id="reg-confirm-password" placeholder="تأكيد كلمة المرور" dir="ltr">
+                    <div id="reg-confirm-error" class="error-message"></div>
+                </div>
+                
+                <!-- حقل رمز التحقق للتسجيل -->
+                <div id="register-otp-container" style="display: none;">
+                    <div>
+                        <input type="text" id="register-otp" placeholder="أدخل رمز التحقق المرسل إلى بريدك" dir="ltr" class="w-full otp-input" maxlength="6">
+                        <div id="register-otp-error" class="error-message"></div>
+                    </div>
+                    <button id="resend-register-otp" class="text-sm text-yellow-dark hover:underline">إعادة إرسال الرمز</button>
+                </div>
+
+                <button id="email-register-btn" class="w-full action-btn">إنشاء حساب</button>
+                <button id="send-register-otp-btn" class="w-full action-btn-outline" style="display: none;">إرسال رمز التحقق</button>
+                <button id="verify-register-otp-btn" class="w-full action-btn" style="display: none;">تحقق من الرمز وإنشاء الحساب</button>
+            </div>
+
+            <div class="relative my-6">
+                <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-dark/10"></div></div>
+                <div class="relative flex justify-center text-xs"><span class="bg-white/60 px-2 text-dark-light">أو</span></div>
+            </div>
+            <button id="google-login-btn" class="w-full bg-white text-gray-800 py-3 rounded-xl font-bold flex items-center justify-center gap-2 border border-gray-200">
+                <i class="fab fa-google"></i> دخول عبر جوجل
+            </button>
         </div>
     </div>
 
@@ -720,6 +540,7 @@
                         <button id="logout-btn" class="w-10 h-10 bg-red-500/20 text-red-600 rounded-full hover:bg-red-500/30"><i class="fas fa-power-off"></i></button>
                     </div>
                 </div>
+                <!-- الأزرار السريعة -->
                 <div class="quick-actions mt-4">
                     <a href="#" onclick="openWalletWhatsApp()" class="action-btn text-center">
                         <i class="fas fa-wallet ml-1"></i> شحن المحفظة
@@ -743,24 +564,22 @@
                         <button class="admin-tab" data-admin-tab="recharge">💰 شحن رصيد</button>
                     </div>
 
+                    <!-- إحصائيات -->
                     <div id="adminStats" class="admin-tab-content active">
-                        <div class="admin-stats-grid">
-                            <div class="stat-card"><p class="number" id="totalUsers">0</p><p class="label">👥 المستخدمين</p></div>
-                            <div class="stat-card"><p class="number" id="todaySales">0</p><p class="label">💰 مبيعات اليوم</p></div>
-                            <div class="stat-card"><p class="number" id="weekSales">0</p><p class="label">📅 مبيعات الأسبوع</p></div>
-                            <div class="stat-card"><p class="number" id="monthSales">0</p><p class="label">📆 مبيعات الشهر</p></div>
-                            <div class="stat-card"><p class="number" id="pendingOrders">0</p><p class="label">⏳ طلبات معلقة</p></div>
-                            <div class="stat-card"><p class="number" id="totalOrders">0</p><p class="label">📋 إجمالي الطلبات</p></div>
-                            <div class="stat-card"><p class="number" id="totalRevenue">0</p><p class="label">💵 إجمالي الإيرادات</p></div>
-                            <div class="stat-card"><p class="number" id="avgOrder">0</p><p class="label">📊 متوسط الطلب</p></div>
+                        <div class="grid grid-cols-3 gap-3 text-center">
+                            <div class="bg-white/5 p-3 rounded-xl"><p class="text-xs text-dark-light">👥 المستخدمين</p><p id="totalUsers" class="text-2xl font-bold text-yellow-dark">0</p></div>
+                            <div class="bg-white/5 p-3 rounded-xl"><p class="text-xs text-dark-light">💰 مبيعات اليوم</p><p id="todaySales" class="text-2xl font-bold text-yellow-dark">0</p></div>
+                            <div class="bg-white/5 p-3 rounded-xl"><p class="text-xs text-dark-light">⏳ طلبات معلقة</p><p id="pendingOrders" class="text-2xl font-bold text-yellow-dark">0</p></div>
                         </div>
                     </div>
 
+                    <!-- قائمة المستخدمين -->
                     <div id="adminUsers" class="admin-tab-content">
                         <h4 class="text-dark font-bold mb-2">👥 جميع المستخدمين</h4>
                         <div id="usersList" class="space-y-2 max-h-80 overflow-y-auto"></div>
                     </div>
 
+                    <!-- إضافة منتج -->
                     <div id="adminAdd" class="admin-tab-content">
                         <div class="space-y-3">
                             <select id="productGame" class="w-full">
@@ -780,26 +599,19 @@
                         </div>
                     </div>
 
+                    <!-- إدارة المنتجات -->
                     <div id="adminManage" class="admin-tab-content">
-                        <div class="flex flex-wrap gap-2 mb-3">
-                            <input type="text" id="searchProduct" class="search-input flex-1" placeholder="🔍 بحث عن منتج...">
-                            <select id="sortProducts" class="sort-select">
-                                <option value="name">ترتيب حسب الاسم</option>
-                                <option value="price-low">السعر (من الأقل)</option>
-                                <option value="price-high">السعر (من الأعلى)</option>
-                            </select>
-                            <button onclick="exportProductsCSV()" class="export-btn">📥 تصدير CSV</button>
-                        </div>
+                        <h4 class="text-dark font-bold mb-2">📦 المنتجات الحالية</h4>
                         <div id="manageProductsList" class="space-y-2 max-h-80 overflow-y-auto"></div>
                     </div>
 
+                    <!-- الطلبات -->
                     <div id="adminOrders" class="admin-tab-content">
-                        <div class="flex gap-2 mb-3">
-                            <button onclick="exportOrdersCSV()" class="export-btn">📥 تصدير الطلبات CSV</button>
-                        </div>
+                        <h4 class="text-dark font-bold mb-2">📋 الطلبات المعلقة</h4>
                         <div id="adminOrdersList" class="space-y-2 max-h-80 overflow-y-auto"></div>
                     </div>
 
+                    <!-- شحن رصيد -->
                     <div id="adminRecharge" class="admin-tab-content">
                         <div class="space-y-3">
                             <input type="text" id="targetWallet" placeholder="رقم المحفظة (مثال: 123456)">
@@ -928,8 +740,20 @@
                 <div id="aiGrid" class="product-grid"></div>
             </div>
 
+            <!-- سجل طلبات العميل -->
             <div class="mt-8">
-                <h3 class="text-2xl font-black text-dark mb-4 border-r-4 border-yellow-dark pr-3">📋 طلباتي</h3>
+                <h3 class="text-2xl font-black text-dark mb-4 border-r-4 border-yellow-dark pr-3">📋 تاريخ طلباتي</h3>
+                
+                <!-- فلاتر الطلبات -->
+                <div class="flex flex-wrap gap-2 mb-4">
+                    <button class="order-filter-btn action-btn-outline text-sm py-1 px-3 active-filter" data-filter="all">الكل</button>
+                    <button class="order-filter-btn action-btn-outline text-sm py-1 px-3" data-filter="قيد الانتظار">⏳ قيد الانتظار</button>
+                    <button class="order-filter-btn action-btn-outline text-sm py-1 px-3" data-filter="جاري المعالجة">🔄 جاري المعالجة</button>
+                    <button class="order-filter-btn action-btn-outline text-sm py-1 px-3" data-filter="مكتمل">✅ مكتمل</button>
+                    <button class="order-filter-btn action-btn-outline text-sm py-1 px-3" data-filter="فشل">❌ فشل</button>
+                    <button class="order-filter-btn action-btn-outline text-sm py-1 px-3" data-filter="بانتظار الدفع">💳 بانتظار الدفع</button>
+                </div>
+                
                 <div id="userOrdersList" class="space-y-4"></div>
             </div>
         </main>
@@ -948,20 +772,18 @@
             <a href="#" onclick="toggleSidebar(false); document.getElementById('userOrdersList').scrollIntoView({behavior:'smooth'});" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fas fa-shopping-bag w-6"></i> طلباتي</a>
             <a href="#" onclick="openWalletWhatsApp(); toggleSidebar(false);" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fas fa-wallet w-6 text-yellow-dark"></i> شحن المحفظة</a>
             <a href="https://wa.me/2490991305468?text=مرحباً%20أحتاج%20مساعدة" target="_blank" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fab fa-whatsapp w-6 text-green-500"></i> خدمة العملاء</a>
-            <a href="#" onclick="toggleSidebar(false); showFAQ();" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fas fa-question-circle w-6"></i> الأسئلة الشائعة</a>
-            <a href="#" onclick="toggleSidebar(false); showAbout();" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fas fa-info-circle w-6"></i> عن المتجر</a>
             <div onclick="toggleSidebar(false); showPolicy('terms');" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl cursor-pointer"><i class="fas fa-file-alt w-6"></i> السياسات</div>
             <div onclick="toggleTheme()" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl cursor-pointer" id="themeToggleBtn"><i class="fas fa-moon w-6"></i> الوضع الليلي</div>
             <a href="#" onclick="document.getElementById('logout-btn').click(); toggleSidebar(false);" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fas fa-sign-out-alt w-6"></i> تسجيل الخروج</a>
         </div>
 
+        <!-- الفوتر -->
         <footer class="fixed bottom-0 left-0 right-0 bg-white/80 backdrop-blur border-t border-dark/10 py-3 text-center text-xs text-dark-light footer-links">
             <div class="flex justify-center gap-4 flex-wrap">
                 <a href="#" onclick="showPolicy('terms');return false;">شروط الخدمة</a>
                 <a href="#" onclick="showPolicy('privacy');return false;">سياسة الخصوصية</a>
                 <a href="#" onclick="showPolicy('refund');return false;">سياسة الاسترجاع</a>
-                <a href="#" onclick="showFAQ();return false;">الأسئلة الشائعة</a>
-                <a href="#" onclick="showAbout();return false;">عن المتجر</a>
+                <a href="#" onclick="showPolicy('about');return false;">عن المتجر</a>
             </div>
             <div class="mt-1">© 2025 MORRE STORE - جميع الحقوق محفوظة</div>
         </footer>
@@ -976,55 +798,9 @@
         </div>
     </div>
 
-    <!-- مودال الأسئلة الشائعة -->
-    <div id="faq-modal" class="hidden fixed inset-0 bg-black/30 backdrop-blur z-50 flex items-center justify-center p-4">
-        <div class="glass w-full max-w-md p-6 rounded-3xl text-dark max-h-[80vh] overflow-y-auto">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold">❓ الأسئلة الشائعة</h3>
-                <button onclick="closeFAQModal()" class="text-dark-light hover:text-dark"><i class="fas fa-times text-2xl"></i></button>
-            </div>
-            <div class="space-y-4">
-                <div><p class="font-bold text-yellow-dark">كيف أشحن محفظتي؟</p><p class="text-dark-light text-sm">اضغط على زر "شحن المحفظة" في الصفحة الرئيسية، سيتم تحويلك إلى واتساب مع رقم محفظتك تلقائياً.</p></div>
-                <div><p class="font-bold text-yellow-dark">كم تستغرق عملية الشحن؟</p><p class="text-dark-light text-sm">تستغرق عملية الشحن من 5 إلى 30 دقيقة بعد تأكيد الدفع.</p></div>
-                <div><p class="font-bold text-yellow-dark">كيف أتواصل مع الدعم الفني؟</p><p class="text-dark-light text-sm">يمكنك التواصل عبر زر "خدمة العملاء" في الصفحة الرئيسية أو عبر واتساب على الرقم 0991305468.</p></div>
-                <div><p class="font-bold text-yellow-dark">ماذا لو تأخر شحن طلبي؟</p><p class="text-dark-light text-sm">إذا تأخر الشحن أكثر من 48 ساعة، يمكنك طلب استرجاع كامل للمبلغ.</p></div>
-                <div><p class="font-bold text-yellow-dark">كيف أعرف حالة طلبي؟</p><p class="text-dark-light text-sm">يمكنك متابعة حالة طلبك من خلال قسم "طلباتي" في الصفحة الرئيسية.</p></div>
-            </div>
-            <button onclick="closeFAQModal()" class="mt-6 w-full bg-dark/5 py-2 rounded-xl">إغلاق</button>
-        </div>
-    </div>
-
-    <!-- مودال عن المتجر -->
-    <div id="about-modal" class="hidden fixed inset-0 bg-black/30 backdrop-blur z-50 flex items-center justify-center p-4">
-        <div class="glass w-full max-w-md p-6 rounded-3xl text-dark">
-            <div class="flex justify-between items-center mb-4">
-                <h3 class="text-xl font-bold">🏢 عن متجر MORRE STORE</h3>
-                <button onclick="closeAboutModal()" class="text-dark-light hover:text-dark"><i class="fas fa-times text-2xl"></i></button>
-            </div>
-            <div class="space-y-3 text-dark-light">
-                <p><strong class="text-dark">MORRE STORE</strong> هو متجر إلكتروني متخصص في شحن العملات والخدمات الرقمية في السودان.</p>
-                <p>📦 <strong class="text-dark">الخدمات المتوفرة:</strong></p>
-                <ul class="list-disc pr-5 space-y-1">
-                    <li>🎮 شحن ببجي PUBG</li>
-                    <li>🔥 شحن فري فاير FreeFire</li>
-                    <li>⚽ شحن eFootball</li>
-                    <li>👑 شحن كلاش أوف كلانس</li>
-                    <li>🎬 اشتراكات نتفليكس</li>
-                    <li>🛍️ بطاقات جوجل بلاي</li>
-                    <li>💳 فيزا Redotpay الافتراضية</li>
-                    <li>🎵 عملات تيك توك</li>
-                    <li>🤖 اشتراكات الذكاء الاصطناعي</li>
-                </ul>
-                <p>📱 <strong class="text-dark">للتواصل:</strong> واتساب <span class="text-green-600">0991305468</span></p>
-                <p>© 2025 جميع الحقوق محفوظة</p>
-            </div>
-            <button onclick="closeAboutModal()" class="mt-6 w-full bg-dark/5 py-2 rounded-xl">إغلاق</button>
-        </div>
-    </div>
-
     <!-- مودال تفاصيل الطلب -->
     <div id="orderDetailModal" class="hidden fixed inset-0 bg-black/30 backdrop-blur z-50 flex items-center justify-center p-4">
-        <div class="glass w-full max-w-md p-6 rounded-3xl text-dark max-h-[90vh] overflow-y-auto">
+        <div class="glass w-full max-w-md p-6 rounded-3xl text-dark">
             <h3 class="text-xl font-bold mb-4">📄 تفاصيل الطلب</h3>
             <div id="orderDetailContent" class="space-y-2 text-sm"></div>
             <button onclick="closeOrderDetailModal()" class="mt-6 w-full bg-dark/5 py-2 rounded-xl">إغلاق</button>
@@ -1061,6 +837,7 @@
             <h2 class="text-xl font-bold text-center text-dark mb-4">🛒 تأكيد بيانات الشحن</h2>
             <div class="space-y-3">
                 <input id="modalGameID" type="text" placeholder="أيدي اللعبة (Player ID)">
+                <input id="modalUID" type="text" placeholder="معرف المستخدم (UID)">
                 <input id="modalGameName" type="text" placeholder="اسمك داخل اللعبة">
                 <input id="modalRealName" type="text" placeholder="الاسم الحقيقي">
                 <div class="whatsapp-icon-input">
@@ -1080,10 +857,30 @@
         </div>
     </div>
 
+    <!-- مودال نسيت كلمة المرور -->
+    <div id="resetPasswordModal" class="hidden fixed inset-0 bg-black/30 backdrop-blur z-[99999] flex items-center justify-center p-4">
+        <div class="glass w-full max-w-md p-6 rounded-3xl text-dark">
+            <h2 class="text-xl font-bold text-center text-dark mb-4">🔑 إعادة تعيين كلمة المرور</h2>
+            <div class="space-y-3">
+                <input type="email" id="reset-email" placeholder="البريد الإلكتروني" dir="ltr">
+                <div id="reset-email-error" class="error-message"></div>
+                <button id="send-reset-email-btn" class="w-full action-btn">إرسال رابط إعادة التعيين</button>
+                <button onclick="closeResetModal()" class="w-full bg-dark/5 py-2 rounded-xl">إلغاء</button>
+            </div>
+        </div>
+    </div>
+
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, doc, onSnapshot, collection, query, where, getDocs, updateDoc, increment, setDoc, serverTimestamp, orderBy, getDoc, runTransaction, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, RecaptchaVerifier, signInWithPhoneNumber, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { 
+            getFirestore, doc, onSnapshot, collection, query, where, getDocs, updateDoc, increment, 
+            setDoc, serverTimestamp, orderBy, getDoc, runTransaction, deleteDoc, writeBatch 
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { 
+            getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, 
+            signInWithEmailAndPassword, createUserWithEmailAndPassword, sendEmailVerification, 
+            sendPasswordResetEmail, isSignInWithEmailLink, signInWithEmailLink 
+        } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyC0jzecEwKgHpxHpTi8Y-_bwwfzVdtgf3E",
@@ -1098,40 +895,6 @@
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
 
-        // ========== تهيئة RecaptchaVerifier بشكل صحيح ==========
-        let recaptchaVerifier = null;
-
-        function initializeRecaptcha() {
-            try {
-                const container = document.getElementById('recaptcha-phone-container');
-                if (!container) {
-                    console.warn('⚠️ recaptcha-phone-container not found');
-                    return null;
-                }
-                if (!recaptchaVerifier) {
-                    recaptchaVerifier = new RecaptchaVerifier('recaptcha-phone-container', {
-                        'size': 'invisible',
-                        'callback': () => {
-                            console.log('✅ reCAPTCHA solved');
-                        },
-                        'expired-callback': () => {
-                            console.log('⚠️ reCAPTCHA expired');
-                            recaptchaVerifier = null;
-                            setTimeout(initializeRecaptcha, 1000);
-                        }
-                    }, auth);
-                    console.log('✅ RecaptchaVerifier initialized');
-                }
-                return recaptchaVerifier;
-            } catch (e) {
-                console.error('❌ Recaptcha init error:', e);
-                return null;
-            }
-        }
-
-        // تهيئة Recaptcha تلقائياً بعد تحميل الصفحة
-        setTimeout(initializeRecaptcha, 1500);
-
         const TELEGRAM_TOKEN = '8616731804:AAGjZzVbWV7DXasmlwjjCyhz3AYUmzGbyi8';
         const TELEGRAM_CHAT_ID = '8539810117';
         const ADMINS = ["mhmdfthu98@gmail.com"];
@@ -1139,18 +902,10 @@
         let userData = null;
         let currentOrder = null;
         let editingProductId = null;
-        let phoneConfirmationResult = null;
-
-        // ========== Toast Notifications ==========
-        function showToast(message, type = 'info') {
-            const toast = document.getElementById('toast');
-            toast.textContent = message;
-            toast.className = 'toast ' + type + ' show';
-            setTimeout(() => {
-                toast.classList.remove('show');
-            }, 4000);
-        }
-        window.showToast = showToast;
+        let currentFilter = 'all';
+        let pendingOTP = null;
+        let pendingEmail = null;
+        let isLoginOTP = false;
 
         // ========== دالة فتح واتساب مع رقم المحفظة ==========
         window.openWalletWhatsApp = function() {
@@ -1159,11 +914,11 @@
                 const message = `مرحباً أريد شحن محفظتي رقم المحفظة: ${walletNumber}`;
                 window.open(`https://wa.me/2490991305468?text=${encodeURIComponent(message)}`, '_blank');
             } else {
-                showToast('❌ يرجى تسجيل الدخول أولاً للحصول على رقم محفظتك', 'error');
+                alert('❌ يرجى تسجيل الدخول أولاً للحصول على رقم محفظتك');
             }
         };
 
-        // ========== المنتجات ==========
+        // ========== المنتجات (بدون منتجات، فقط الخدمات) ==========
         let allProducts = {
             pubg: [],
             freefire: [],
@@ -1176,13 +931,441 @@
             ai: []
         };
 
-        async function saveProductsToFirestore() {
-            for (const category in allProducts) {
-                for (const product of allProducts[category]) {
-                    const productRef = doc(db, "products", product.id);
-                    await setDoc(productRef, product, { merge: true });
+        // ========== دوال التحقق من صحة البيانات ==========
+        function validateEmail(email) {
+            const re = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            return re.test(email);
+        }
+
+        function validatePassword(password) {
+            return password.length >= 8 && /\d/.test(password);
+        }
+
+        function getPasswordStrength(password) {
+            if (password.length < 8) return 'ضعيفة';
+            if (password.length >= 8 && /\d/.test(password) && /[A-Z]/.test(password) && /[a-z]/.test(password)) return 'قوية';
+            if (password.length >= 8 && /\d/.test(password)) return 'متوسطة';
+            return 'ضعيفة';
+        }
+
+        function showError(elementId, message) {
+            const el = document.getElementById(elementId);
+            if (el) {
+                el.textContent = message;
+                el.style.display = 'block';
+            }
+        }
+
+        function hideError(elementId) {
+            const el = document.getElementById(elementId);
+            if (el) {
+                el.style.display = 'none';
+            }
+        }
+
+        function showSuccess(elementId, message) {
+            const el = document.getElementById(elementId);
+            if (el) {
+                el.textContent = message;
+                el.style.display = 'block';
+            }
+        }
+
+        function generateOTP() {
+            return Math.floor(100000 + Math.random() * 900000).toString();
+        }
+
+        async function sendOTPEmail(email, otp, isLogin = false) {
+            const subject = isLogin ? 'رمز تسجيل الدخول - MORRE STORE' : 'رمز تأكيد الحساب - MORRE STORE';
+            const message = `
+                <h2>مرحباً بك في MORRE STORE</h2>
+                <p>${isLogin ? 'رمز تسجيل الدخول الخاص بك' : 'رمز تأكيد حسابك'} هو:</p>
+                <h1 style="font-size: 32px; color: #d97706;">${otp}</h1>
+                <p>هذا الرمز صالح لمدة 5 دقائق.</p>
+                <p>إذا لم تطلب هذا، يرجى تجاهل هذه الرسالة.</p>
+                <hr>
+                <p>© 2025 MORRE STORE - جميع الحقوق محفوظة</p>
+            `;
+
+            try {
+                const response = await fetch('https://api.telegram.org/bot' + TELEGRAM_TOKEN + '/sendMessage', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: `📧 **طلب رمز تحقق**\n\n📧 البريد: ${email}\n🔑 الرمز: ${otp}\n📌 النوع: ${isLogin ? 'تسجيل دخول' : 'تسجيل حساب'}\n⏰ الوقت: ${new Date().toLocaleString('ar-SD')}`,
+                        parse_mode: 'Markdown'
+                    })
+                });
+                return true;
+            } catch (e) {
+                console.error('Error sending OTP:', e);
+                return false;
+            }
+        }
+
+        // ========== دوال تسجيل الدخول وإنشاء الحساب ==========
+        // تسجيل الدخول
+        document.getElementById('email-login-btn').addEventListener('click', async function() {
+            const email = document.getElementById('login-email').value.trim();
+            const password = document.getElementById('login-password').value;
+
+            // التحقق من صحة البريد الإلكتروني
+            if (!email) {
+                showError('login-email-error', '❌ البريد الإلكتروني مطلوب');
+                return;
+            }
+            if (!validateEmail(email)) {
+                showError('login-email-error', '❌ صيغة البريد الإلكتروني غير صحيحة');
+                return;
+            }
+            hideError('login-email-error');
+
+            if (!password) {
+                showError('login-password-error', '❌ كلمة المرور مطلوبة');
+                return;
+            }
+            hideError('login-password-error');
+
+            try {
+                // محاولة تسجيل الدخول
+                const userCredential = await signInWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // التحقق من البريد الإلكتروني
+                if (!user.emailVerified) {
+                    // إرسال رمز OTP بدلاً من رابط التحقق
+                    const otp = generateOTP();
+                    pendingOTP = otp;
+                    pendingEmail = email;
+                    isLoginOTP = true;
+                    
+                    await sendOTPEmail(email, otp, true);
+                    
+                    document.getElementById('login-otp-container').style.display = 'block';
+                    document.getElementById('send-login-otp-btn').style.display = 'block';
+                    document.getElementById('verify-login-otp-btn').style.display = 'block';
+                    document.getElementById('email-login-btn').style.display = 'none';
+                    
+                    showSuccess('login-email-error', '✅ تم إرسال رمز التحقق إلى بريدك الإلكتروني');
+                    return;
+                }
+
+                // إذا كان البريد مؤكد، نكمل
+                await handleSuccessfulLogin(user);
+            } catch (error) {
+                if (error.code === 'auth/user-not-found') {
+                    showError('login-email-error', '❌ هذا البريد الإلكتروني غير مسجل');
+                } else if (error.code === 'auth/wrong-password') {
+                    showError('login-password-error', '❌ كلمة المرور غير صحيحة');
+                } else if (error.code === 'auth/too-many-requests') {
+                    showError('login-email-error', '❌ تم إيقاف الحساب مؤقتاً بسبب محاولات متعددة. حاول لاحقاً');
+                } else {
+                    showError('login-email-error', '❌ حدث خطأ: ' + error.message);
                 }
             }
+        });
+
+        // إرسال رمز OTP لتسجيل الدخول
+        document.getElementById('send-login-otp-btn').addEventListener('click', async function() {
+            if (pendingEmail) {
+                const otp = generateOTP();
+                pendingOTP = otp;
+                await sendOTPEmail(pendingEmail, otp, true);
+                showSuccess('login-email-error', '✅ تم إعادة إرسال رمز التحقق إلى بريدك');
+            }
+        });
+
+        // التحقق من رمز OTP لتسجيل الدخول
+        document.getElementById('verify-login-otp-btn').addEventListener('click', async function() {
+            const otp = document.getElementById('login-otp').value.trim();
+            
+            if (!otp) {
+                showError('login-otp-error', '❌ الرجاء إدخال رمز التحقق');
+                return;
+            }
+
+            if (otp === pendingOTP) {
+                try {
+                    const userCredential = await signInWithEmailAndPassword(auth, pendingEmail, document.getElementById('login-password').value);
+                    await handleSuccessfulLogin(userCredential.user);
+                } catch (error) {
+                    showError('login-otp-error', '❌ حدث خطأ: ' + error.message);
+                }
+            } else {
+                showError('login-otp-error', '❌ الرمز غير صحيح. يرجى المحاولة مرة أخرى');
+            }
+        });
+
+        // إعادة إرسال رمز OTP لتسجيل الدخول
+        document.getElementById('resend-login-otp').addEventListener('click', async function() {
+            if (pendingEmail) {
+                const otp = generateOTP();
+                pendingOTP = otp;
+                await sendOTPEmail(pendingEmail, otp, true);
+                showSuccess('login-email-error', '✅ تم إعادة إرسال رمز التحقق إلى بريدك');
+            }
+        });
+
+        // إنشاء حساب جديد
+        document.getElementById('email-register-btn').addEventListener('click', async function() {
+            const name = document.getElementById('reg-name').value.trim();
+            const email = document.getElementById('reg-email').value.trim();
+            const password = document.getElementById('reg-password').value;
+            const confirmPassword = document.getElementById('reg-confirm-password').value;
+
+            // التحقق من الاسم
+            if (!name) {
+                showError('reg-name-error', '❌ الاسم الكامل مطلوب');
+                return;
+            }
+            if (name.length < 3) {
+                showError('reg-name-error', '❌ الاسم يجب أن يكون 3 أحرف على الأقل');
+                return;
+            }
+            hideError('reg-name-error');
+
+            // التحقق من البريد الإلكتروني
+            if (!email) {
+                showError('reg-email-error', '❌ البريد الإلكتروني مطلوب');
+                return;
+            }
+            if (!validateEmail(email)) {
+                showError('reg-email-error', '❌ صيغة البريد الإلكتروني غير صحيحة');
+                return;
+            }
+            hideError('reg-email-error');
+
+            // التحقق من كلمة المرور
+            if (!password) {
+                showError('reg-password-error', '❌ كلمة المرور مطلوبة');
+                return;
+            }
+            if (!validatePassword(password)) {
+                showError('reg-password-error', '❌ كلمة المرور يجب أن تكون 8 أحرف على الأقل وتحتوي على أرقام');
+                return;
+            }
+            const strength = getPasswordStrength(password);
+            if (strength === 'ضعيفة') {
+                showError('reg-password-error', '⚠️ كلمة المرور ضعيفة. استخدم حروف كبيرة وصغيرة وأرقام');
+                return;
+            }
+            hideError('reg-password-error');
+
+            // التحقق من تطابق كلمة المرور
+            if (password !== confirmPassword) {
+                showError('reg-confirm-error', '❌ كلمة المرور غير متطابقة مع التأكيد');
+                return;
+            }
+            hideError('reg-confirm-error');
+
+            try {
+                // إنشاء الحساب
+                const userCredential = await createUserWithEmailAndPassword(auth, email, password);
+                const user = userCredential.user;
+
+                // إرسال رمز OTP بدلاً من رابط التحقق
+                const otp = generateOTP();
+                pendingOTP = otp;
+                pendingEmail = email;
+                isLoginOTP = false;
+
+                // حفظ بيانات المستخدم مؤقتاً
+                pendingUserData = { name, email, password };
+
+                await sendOTPEmail(email, otp, false);
+
+                document.getElementById('register-otp-container').style.display = 'block';
+                document.getElementById('send-register-otp-btn').style.display = 'block';
+                document.getElementById('verify-register-otp-btn').style.display = 'block';
+                document.getElementById('email-register-btn').style.display = 'none';
+
+                showSuccess('reg-email-error', '✅ تم إرسال رمز التحقق إلى بريدك الإلكتروني');
+            } catch (error) {
+                if (error.code === 'auth/email-already-in-use') {
+                    showError('reg-email-error', '❌ هذا البريد الإلكتروني مستخدم مسبقاً');
+                } else if (error.code === 'auth/invalid-email') {
+                    showError('reg-email-error', '❌ صيغة البريد الإلكتروني غير صحيحة');
+                } else {
+                    showError('reg-email-error', '❌ حدث خطأ: ' + error.message);
+                }
+            }
+        });
+
+        let pendingUserData = null;
+
+        // إرسال رمز OTP للتسجيل
+        document.getElementById('send-register-otp-btn').addEventListener('click', async function() {
+            if (pendingEmail) {
+                const otp = generateOTP();
+                pendingOTP = otp;
+                await sendOTPEmail(pendingEmail, otp, false);
+                showSuccess('reg-email-error', '✅ تم إعادة إرسال رمز التحقق إلى بريدك');
+            }
+        });
+
+        // إعادة إرسال رمز OTP للتسجيل
+        document.getElementById('resend-register-otp').addEventListener('click', async function() {
+            if (pendingEmail) {
+                const otp = generateOTP();
+                pendingOTP = otp;
+                await sendOTPEmail(pendingEmail, otp, false);
+                showSuccess('reg-email-error', '✅ تم إعادة إرسال رمز التحقق إلى بريدك');
+            }
+        });
+
+        // التحقق من رمز OTP للتسجيل وإنشاء الحساب
+        document.getElementById('verify-register-otp-btn').addEventListener('click', async function() {
+            const otp = document.getElementById('register-otp').value.trim();
+
+            if (!otp) {
+                showError('register-otp-error', '❌ الرجاء إدخال رمز التحقق');
+                return;
+            }
+
+            if (otp === pendingOTP && pendingUserData) {
+                try {
+                    // إنشاء الحساب في Firestore
+                    const walletID = Math.floor(100000 + Math.random() * 900000).toString();
+                    await setDoc(doc(db, "users", auth.currentUser.uid), {
+                        name: pendingUserData.name,
+                        email: pendingUserData.email,
+                        img: 'https://via.placeholder.com/100',
+                        walletID: walletID,
+                        balance: 0,
+                        createdAt: serverTimestamp(),
+                        emailVerified: true
+                    });
+
+                    // تحديث حالة التحقق في Auth
+                    await sendEmailVerification(auth.currentUser);
+                    
+                    // تحديث بيانات المستخدم
+                    await auth.currentUser.reload();
+
+                    alert(`✅ تم إنشاء الحساب بنجاح!\n📱 رقم محفظتك: #${walletID}\n💰 للشحن اضغط على زر "شحن المحفظة"`);
+                    
+                    // إخفاء حقول OTP
+                    document.getElementById('register-otp-container').style.display = 'none';
+                    document.getElementById('send-register-otp-btn').style.display = 'none';
+                    document.getElementById('verify-register-otp-btn').style.display = 'none';
+                    document.getElementById('email-register-btn').style.display = 'block';
+
+                    // بدء التطبيق
+                    await handleSuccessfulLogin(auth.currentUser);
+                } catch (error) {
+                    showError('register-otp-error', '❌ حدث خطأ: ' + error.message);
+                }
+            } else {
+                showError('register-otp-error', '❌ الرمز غير صحيح. يرجى المحاولة مرة أخرى');
+            }
+        });
+
+        // ========== دوال تسجيل الدخول عبر Google ==========
+        document.getElementById('google-login-btn').addEventListener('click', async function() {
+            try {
+                const result = await signInWithPopup(auth, provider);
+                const user = result.user;
+
+                // التحقق من وجود المستخدم في Firestore
+                const userRef = doc(db, "users", user.uid);
+                const userSnap = await getDoc(userRef);
+
+                if (!userSnap.exists()) {
+                    // إنشاء حساب جديد
+                    const walletID = Math.floor(100000 + Math.random() * 900000).toString();
+                    await setDoc(userRef, {
+                        name: user.displayName || user.email.split('@')[0],
+                        email: user.email,
+                        img: user.photoURL || 'https://via.placeholder.com/100',
+                        walletID: walletID,
+                        balance: 0,
+                        createdAt: serverTimestamp(),
+                        emailVerified: true
+                    });
+                    alert(`✅ تم إنشاء حسابك!\n📱 رقم محفظتك: #${walletID}`);
+                }
+
+                await handleSuccessfulLogin(user);
+            } catch (error) {
+                if (error.code === 'auth/popup-closed-by-user') {
+                    alert('❌ تم إغلاق نافذة تسجيل الدخول');
+                } else {
+                    alert('❌ حدث خطأ في تسجيل الدخول بجوجل: ' + error.message);
+                }
+            }
+        });
+
+        // ========== دوال نسيت كلمة المرور ==========
+        document.getElementById('forgot-password-link').addEventListener('click', function(e) {
+            e.preventDefault();
+            document.getElementById('resetPasswordModal').classList.remove('hidden');
+        });
+
+        document.getElementById('send-reset-email-btn').addEventListener('click', async function() {
+            const email = document.getElementById('reset-email').value.trim();
+
+            if (!email) {
+                showError('reset-email-error', '❌ البريد الإلكتروني مطلوب');
+                return;
+            }
+            if (!validateEmail(email)) {
+                showError('reset-email-error', '❌ صيغة البريد الإلكتروني غير صحيحة');
+                return;
+            }
+            hideError('reset-email-error');
+
+            try {
+                await sendPasswordResetEmail(auth, email);
+                alert('✅ تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك الإلكتروني');
+                closeResetModal();
+            } catch (error) {
+                if (error.code === 'auth/user-not-found') {
+                    showError('reset-email-error', '❌ هذا البريد الإلكتروني غير مسجل');
+                } else {
+                    showError('reset-email-error', '❌ حدث خطأ: ' + error.message);
+                }
+            }
+        });
+
+        function closeResetModal() {
+            document.getElementById('resetPasswordModal').classList.add('hidden');
+            document.getElementById('reset-email').value = '';
+            hideError('reset-email-error');
+        }
+
+        // ========== دوال تسجيل الدخول الناجح ==========
+        async function handleSuccessfulLogin(user) {
+            // تحديث حالة التحقق
+            await user.reload();
+            
+            // بدء التطبيق
+            document.getElementById('auth-screen').classList.add('hidden');
+            document.getElementById('main-app').classList.remove('hidden');
+            document.getElementById('loading-screen').classList.add('hidden');
+
+            // عرض رسالة ترحيبية
+            const userSnap = await getDoc(doc(db, "users", user.uid));
+            if (userSnap.exists()) {
+                const data = userSnap.data();
+                alert(`👋 مرحباً بعودتك ${data.name || 'مستخدم'}!`);
+            }
+
+            startEngine(user);
+        }
+
+        // ========== دوال تسجيل الخروج ==========
+        document.getElementById('logout-btn').addEventListener('click', async function() {
+            await signOut(auth);
+            document.getElementById('main-app').classList.add('hidden');
+            document.getElementById('auth-screen').classList.remove('hidden');
+            goHome();
+            document.getElementById('loading-screen').classList.add('hidden');
+        });
+
+        // ========== دوال المنتجات ==========
+        async function saveProductsToFirestore() {
+            // لا نقوم بحفظ أي منتجات، فقط الخدمات
         }
 
         async function loadProductsFromFirestore() {
@@ -1202,8 +1385,6 @@
                             allProducts[category] = newProducts[category];
                         }
                     }
-                } else {
-                    await saveProductsToFirestore();
                 }
             } catch (e) {
                 console.error("Error loading products:", e);
@@ -1211,62 +1392,69 @@
             renderAllProducts();
         }
 
-        async function sendTelegramNotification(orderData) {
-            const message =
-                `🛒 **طلب جديد في MORRE STORE!**\n━━━━━━━━━━━━━━━━━━\n📦 **المنتج:** ${orderData.product}\n💰 **السعر:** ${orderData.price} ج.س\n🎮 **اللعبة:** ${orderData.game}\n👤 **العميل:** ${orderData.uName}\n🆔 **الأيدي:** ${orderData.gameID}\n🎮 **الاسم:** ${orderData.gameName}\n📱 **واتساب:** ${orderData.whatsapp}\n⏰ **الوقت:** ${new Date().toLocaleString('ar-SD')}`;
-            try {
-                await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message, parse_mode: 'Markdown' })
-                });
-            } catch (e) { console.error(e); }
+        function renderAllProducts() {
+            const categories = ['pubg', 'freefire', 'clash', 'efootball', 'netflix', 'googleplay', 'redotpay', 'tiktok',
+                'ai'
+            ];
+            categories.forEach(cat => {
+                const grid = document.getElementById(`${cat}Grid`);
+                if (!grid) return;
+                const products = allProducts[cat]?.filter(p => p.isActive !== false) || [];
+                grid.innerHTML = products.map(p => `
+                            <div class="product-card p-5 text-dark text-center" onclick="window.showOrderModal('${p.name}', ${p.price}, '${p.category}', '${p.id}')">
+                                <p class="font-bold text-lg">${p.name}</p>
+                                <p class="text-2xl font-black text-yellow-dark my-2">${p.price.toLocaleString()} ج.س</p>
+                                <button class="w-full action-btn">شراء</button>
+                            </div>
+                        `).join('');
+            });
         }
 
-        function showOrderModal(product, price, category, productId) {
+        window.showOrderModal = function(product, price, category, productId) {
             if (!userData) {
-                showToast('❌ يرجى تسجيل الدخول أولاً', 'error');
+                alert('❌ يرجى تسجيل الدخول أولاً');
                 return;
             }
             if (userData.balance < price) {
-                showToast(
-                    `❌ رصيدك غير كافي!\nرصيدك الحالي: ${userData.balance.toLocaleString()} ج.س\nسعر المنتج: ${price.toLocaleString()} ج.س`,
-                    'error');
+                alert(
+                    `❌ رصيدك غير كافي!\n\nرصيدك الحالي: ${userData.balance.toLocaleString()} ج.س\nسعر المنتج: ${price.toLocaleString()} ج.س\n\nيرجى شحن محفظتك عبر زر "شحن المحفظة"`);
                 return;
             }
             currentOrder = { product, price, category, productId };
             document.getElementById('modalProductName').innerHTML = `المنتج: ${product}`;
             document.getElementById('modalProductPrice').innerHTML = `المبلغ: ${price.toLocaleString()} ج.س`;
             document.getElementById('orderModal').classList.remove('hidden');
-        }
+        };
 
-        window.closeOrderModal = () => {
+        window.closeOrderModal = function() {
             document.getElementById('orderModal').classList.add('hidden');
             currentOrder = null;
             document.getElementById('modalGameID').value = '';
+            document.getElementById('modalUID').value = '';
             document.getElementById('modalGameName').value = '';
             document.getElementById('modalRealName').value = '';
             document.getElementById('modalWhatsApp').value = '';
         };
 
-        document.getElementById('confirmOrderBtn').onclick = async () => {
+        document.getElementById('confirmOrderBtn').onclick = async function() {
             if (!currentOrder) {
-                showToast('❌ لا يوجد طلب نشط', 'error');
+                alert("❌ لا يوجد طلب نشط");
                 return;
             }
 
             const gameID = document.getElementById('modalGameID')?.value.trim();
+            const uid = document.getElementById('modalUID')?.value.trim();
             const gameName = document.getElementById('modalGameName')?.value.trim();
             const realName = document.getElementById('modalRealName')?.value.trim();
             const whatsapp = document.getElementById('modalWhatsApp')?.value.trim();
 
-            if (!gameID || !gameName || !realName || !whatsapp) {
-                showToast('❌ جميع الحقول مطلوبة!', 'error');
+            if (!gameID || !uid || !gameName || !realName || !whatsapp) {
+                alert("❌ جميع الحقول مطلوبة!");
                 return;
             }
 
             if (!whatsapp.match(/^[0-9]{10,15}$/)) {
-                showToast('❌ رقم واتساب غير صحيح! يجب أن يكون 10-15 رقم', 'error');
+                alert("❌ رقم واتساب غير صحيح! يجب أن يكون 10-15 رقم");
                 return;
             }
 
@@ -1284,61 +1472,65 @@
                         price: currentOrder.price,
                         game: currentOrder.category,
                         gameID,
+                        uid,
                         gameName,
                         realName,
                         whatsapp,
                         status: 'قيد الانتظار',
-                        statusHistory: [{
-                            status: 'قيد الانتظار',
-                            timestamp: serverTimestamp()
-                        }],
-                        timestamp: serverTimestamp(),
-                        updatedAt: serverTimestamp()
+                        timestamp: serverTimestamp()
                     };
                     const orderRef = doc(collection(db, "orders"));
                     transaction.set(orderRef, orderData);
                     setTimeout(() => sendTelegramNotification(orderData), 1000);
+                    setTimeout(() => sendCustomerConfirmation(orderData), 1500);
                 });
-                showToast('✅ تم إرسال طلبك بنجاح! سيتم التواصل معك عبر واتساب', 'success');
+                alert("✅ تم إرسال طلبك بنجاح! سيتم التواصل معك عبر واتساب قريباً");
                 closeOrderModal();
             } catch (error) {
-                showToast('❌ حدث خطأ: ' + error.message, 'error');
+                alert("❌ حدث خطأ: " + error.message);
             }
         };
 
-        function renderAllProducts() {
-            const categories = ['pubg', 'freefire', 'clash', 'efootball', 'netflix', 'googleplay', 'redotpay', 'tiktok',
-                'ai'
-            ];
-            categories.forEach(cat => {
-                const grid = document.getElementById(`${cat}Grid`);
-                if (!grid) return;
-                const products = allProducts[cat]?.filter(p => p.isActive !== false) || [];
-                if (products.length === 0) {
-                    grid.innerHTML =
-                        '<p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>';
-                    return;
-                }
-                grid.innerHTML = products.map(p => `
-                            <div class="product-card p-5 text-dark text-center" onclick="window.showOrderModal('${p.name}', ${p.price}, '${p.category}', '${p.id}')">
-                                <p class="font-bold text-lg">${p.name}</p>
-                                <p class="text-2xl font-black text-yellow-dark my-2">${p.price.toLocaleString()} ج.س</p>
-                                <button class="w-full action-btn">شراء</button>
-                            </div>
-                        `).join('');
-            });
+        // ========== إرسال رسالة تأكيد للعميل ==========
+        async function sendCustomerConfirmation(orderData) {
+            const message = 
+                `🛒 **تأكيد استلام طلبك من MORRE STORE**\n━━━━━━━━━━━━━━━━━━\n📦 **المنتج:** ${orderData.product}\n💰 **السعر:** ${orderData.price} ج.س\n🆔 **رقم الطلب:** ${orderData.uID?.slice(-6) || 'N/A'}\n⏰ **الوقت:** ${new Date().toLocaleString('ar-SD')}\n\n✅ تم استلام طلبك بنجاح. سيتم التواصل معك قريباً.`;
+            
+            try {
+                const phoneNumber = orderData.whatsapp.replace(/^0/, '249');
+                await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        chat_id: TELEGRAM_CHAT_ID,
+                        text: `📱 **رسالة تأكيد للعميل**\n📞 رقم: ${orderData.whatsapp}\n\n${message}`,
+                        parse_mode: 'Markdown'
+                    })
+                });
+            } catch (e) { console.error('Error sending customer confirmation:', e); }
         }
 
-        window.showOrderModal = showOrderModal;
+        // ========== إرسال إشعار للأدمن ==========
+        async function sendTelegramNotification(orderData) {
+            const message =
+                `🛒 **طلب جديد في MORRE STORE!**\n━━━━━━━━━━━━━━━━━━\n📦 **المنتج:** ${orderData.product}\n💰 **السعر:** ${orderData.price} ج.س\n🎮 **اللعبة:** ${orderData.game}\n👤 **العميل:** ${orderData.uName}\n🆔 **الأيدي:** ${orderData.gameID}\n🔑 **UID:** ${orderData.uid}\n🎮 **الاسم:** ${orderData.gameName}\n📱 **واتساب:** ${orderData.whatsapp}\n⏰ **الوقت:** ${new Date().toLocaleString('ar-SD')}`;
+            try {
+                await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ chat_id: TELEGRAM_CHAT_ID, text: message, parse_mode: 'Markdown' })
+                });
+            } catch (e) { console.error(e); }
+        }
 
         // ========== دوال الأدمن ==========
-        window.addNewProduct = async () => {
+        window.addNewProduct = async function() {
             const game = document.getElementById('productGame').value;
             const name = document.getElementById('productName').value.trim();
             const price = parseInt(document.getElementById('productPrice').value);
 
             if (!name || !price) {
-                showToast('❌ اسم المنتج والسعر مطلوبين', 'error');
+                alert("❌ اسم المنتج والسعر مطلوبين");
                 return;
             }
 
@@ -1355,25 +1547,25 @@
 
             document.getElementById('productName').value = '';
             document.getElementById('productPrice').value = '';
-            showToast('✅ تم إضافة المنتج بنجاح', 'success');
+            alert("✅ تم إضافة المنتج");
         };
 
-        window.editProductPrice = (productId, currentPrice) => {
+        window.editProductPrice = function(productId, currentPrice) {
             editingProductId = productId;
             document.getElementById('editPriceInput').value = currentPrice;
             document.getElementById('editPriceModal').classList.remove('hidden');
         };
 
-        window.closeEditModal = () => {
+        window.closeEditModal = function() {
             document.getElementById('editPriceModal').classList.add('hidden');
             editingProductId = null;
         };
 
-        document.getElementById('savePriceBtn').onclick = async () => {
+        document.getElementById('savePriceBtn').onclick = async function() {
             if (!editingProductId) return;
             const newPrice = parseInt(document.getElementById('editPriceInput').value);
             if (!newPrice || newPrice < 0) {
-                showToast('❌ سعر غير صحيح', 'error');
+                alert("❌ سعر غير صحيح");
                 return;
             }
 
@@ -1390,10 +1582,10 @@
             renderAllProducts();
             loadManageProducts();
             closeEditModal();
-            showToast('✅ تم تحديث السعر بنجاح', 'success');
+            alert("✅ تم تحديث السعر");
         };
 
-        window.deleteProduct = async (productId) => {
+        window.deleteProduct = async function(productId) {
             if (confirm("⚠️ هل أنت متأكد من حذف هذا المنتج نهائياً؟")) {
                 await deleteDoc(doc(db, "products", productId));
                 for (const category in allProducts) {
@@ -1401,57 +1593,42 @@
                 }
                 renderAllProducts();
                 loadManageProducts();
-                showToast('✅ تم حذف المنتج نهائياً', 'success');
+                alert("✅ تم حذف المنتج نهائياً");
             }
         };
 
         async function loadManageProducts() {
             try {
                 const productsSnap = await getDocs(query(collection(db, "products"), where("isActive", "==", true)));
-                let products = [];
-                productsSnap.forEach(doc => {
-                    const p = doc.data();
-                    products.push({ ...p, id: doc.id });
-                });
-
-                const searchTerm = document.getElementById('searchProduct')?.value?.toLowerCase() || '';
-                if (searchTerm) {
-                    products = products.filter(p => p.name.toLowerCase().includes(searchTerm));
-                }
-
-                const sortBy = document.getElementById('sortProducts')?.value || 'name';
-                if (sortBy === 'price-low') products.sort((a, b) => a.price - b.price);
-                else if (sortBy === 'price-high') products.sort((a, b) => b.price - a.price);
-                else products.sort((a, b) => a.name.localeCompare(b.name));
-
                 const list = document.getElementById('manageProductsList');
                 list.innerHTML = '';
-                if (products.length === 0) {
+                if (productsSnap.empty) {
                     list.innerHTML = '<p class="text-dark-light text-center">لا توجد منتجات</p>';
                     return;
                 }
-                const catNames = {
-                    pubg: '🎮 ببجي',
-                    freefire: '🔥 فري فاير',
-                    clash: '👑 كلاش',
-                    efootball: '⚽ eFootball',
-                    netflix: '🎬 نتفليكس',
-                    googleplay: '🛍️ جوجل بلاي',
-                    redotpay: '💳 فيزا',
-                    tiktok: '🎵 تيك توك',
-                    ai: '🤖 ذكاء اصطناعي'
-                };
-                products.forEach(p => {
+                productsSnap.forEach(doc => {
+                    const p = doc.data();
+                    const catNames = {
+                        pubg: '🎮 ببجي',
+                        freefire: '🔥 فري فاير',
+                        clash: '👑 كلاش',
+                        efootball: '⚽ eFootball',
+                        netflix: '🎬 نتفليكس',
+                        googleplay: '🛍️ جوجل بلاي',
+                        redotpay: '💳 فيزا',
+                        tiktok: '🎵 تيك توك',
+                        ai: '🤖 ذكاء اصطناعي'
+                    };
                     list.innerHTML += `
-                                <div class="product-item flex flex-wrap justify-between items-center p-3 bg-white/50 rounded-xl">
-                                    <div class="flex-1 min-w-[150px]">
+                                <div class="product-item flex justify-between items-center p-3 bg-white/50 rounded-xl">
+                                    <div>
                                         <p class="text-dark font-bold">${p.name}</p>
                                         <p class="text-yellow-dark text-sm">${p.price.toLocaleString()} ج.س</p>
                                         <p class="text-dark-light text-xs">${catNames[p.category] || p.category}</p>
                                     </div>
-                                    <div class="flex gap-2 mt-2 sm:mt-0">
-                                        <button onclick="window.editProductPrice('${p.id}', ${p.price})" class="bg-yellow-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-yellow-600">تعديل السعر</button>
-                                        <button onclick="window.deleteProduct('${p.id}')" class="bg-red-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-red-600">حذف</button>
+                                    <div class="flex gap-2">
+                                        <button onclick="window.editProductPrice('${doc.id}', ${p.price})" class="bg-yellow-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-yellow-600">تعديل السعر</button>
+                                        <button onclick="window.deleteProduct('${doc.id}')" class="bg-red-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-red-600">حذف</button>
                                     </div>
                                 </div>
                             `;
@@ -1459,55 +1636,9 @@
             } catch (e) {
                 console.error("Error loading manage products:", e);
                 document.getElementById('manageProductsList').innerHTML =
-                    '<p class="text-red-500 text-center">❌ حدث خطأ في تحميل المنتجات</p>';
+                '<p class="text-red-500 text-center">❌ حدث خطأ في تحميل المنتجات</p>';
             }
         }
-
-        // ========== تصدير المنتجات CSV ==========
-        window.exportProductsCSV = async function() {
-            try {
-                const productsSnap = await getDocs(query(collection(db, "products"), where("isActive", "==", true)));
-                let csv = 'الاسم,السعر,التصنيف\n';
-                productsSnap.forEach(doc => {
-                    const p = doc.data();
-                    csv += `"${p.name}",${p.price},"${p.category}"\n`;
-                });
-                const blob = new Blob([csv], { type: 'text/csv' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `products_${new Date().toISOString().slice(0,10)}.csv`;
-                a.click();
-                URL.revokeObjectURL(url);
-                showToast('✅ تم تصدير المنتجات بنجاح', 'success');
-            } catch (e) {
-                showToast('❌ حدث خطأ في التصدير', 'error');
-            }
-        };
-
-        // ========== تصدير الطلبات CSV ==========
-        window.exportOrdersCSV = async function() {
-            try {
-                const ordersSnap = await getDocs(collection(db, "orders"));
-                let csv = 'المنتج,السعر,العميل,أيدي اللعبة,واتساب,الحالة,التاريخ\n';
-                ordersSnap.forEach(doc => {
-                    const o = doc.data();
-                    const date = o.timestamp?.toDate ? new Date(o.timestamp.toDate()).toLocaleString() : 'غير محدد';
-                    csv +=
-                        `"${o.product}",${o.price},"${o.uName || 'غير محدد'}","${o.gameID || ''}","${o.whatsapp || ''}","${o.status}",${date}\n`;
-                });
-                const blob = new Blob([csv], { type: 'text/csv' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `orders_${new Date().toISOString().slice(0,10)}.csv`;
-                a.click();
-                URL.revokeObjectURL(url);
-                showToast('✅ تم تصدير الطلبات بنجاح', 'success');
-            } catch (e) {
-                showToast('❌ حدث خطأ في التصدير', 'error');
-            }
-        };
 
         // ========== عرض جميع المستخدمين ==========
         function loadAllUsers() {
@@ -1521,12 +1652,12 @@
                 snap.forEach(doc => {
                     const user = doc.data();
                     list.innerHTML += `
-                                <div class="user-item flex flex-wrap justify-between items-center p-3 bg-white/50 rounded-xl" onclick="showUserDetails('${doc.id}')">
+                                <div class="user-item flex justify-between items-center p-3 bg-white/50 rounded-xl" onclick="showUserDetails('${doc.id}')">
                                     <div class="flex items-center gap-3">
                                         <img src="${user.img || 'https://via.placeholder.com/40'}" class="w-10 h-10 rounded-full border-2 border-yellow-500">
                                         <div>
                                             <p class="text-dark font-bold">${user.name || 'مستخدم'}</p>
-                                            <p class="text-dark-light text-xs">${user.email || user.phone || 'لا يوجد'}</p>
+                                            <p class="text-dark-light text-xs">${user.email || 'لا يوجد بريد'}</p>
                                         </div>
                                     </div>
                                     <div class="text-left">
@@ -1540,7 +1671,7 @@
         }
 
         // ========== عرض تفاصيل مستخدم ==========
-        window.showUserDetails = async (userId) => {
+        window.showUserDetails = async function(userId) {
             try {
                 const userDoc = await getDoc(doc(db, "users", userId));
                 if (userDoc.exists()) {
@@ -1548,7 +1679,6 @@
                     document.getElementById('userDetailContent').innerHTML = `
                                 <p><strong>👤 الاسم:</strong> ${user.name || 'غير محدد'}</p>
                                 <p><strong>📧 البريد:</strong> ${user.email || 'غير محدد'}</p>
-                                <p><strong>📱 الجوال:</strong> ${user.phone || 'غير محدد'}</p>
                                 <p><strong>💰 الرصيد:</strong> ${(user.balance || 0).toLocaleString()} ج.س</p>
                                 <p><strong>📱 رقم المحفظة:</strong> #${user.walletID || '000000'}</p>
                                 <p><strong>🆔 معرف المستخدم:</strong> ${userId}</p>
@@ -1557,54 +1687,25 @@
                     document.getElementById('userDetailModal').classList.remove('hidden');
                 }
             } catch (e) {
-                showToast('❌ حدث خطأ في جلب بيانات المستخدم', 'error');
+                alert('❌ حدث خطأ في جلب بيانات المستخدم');
             }
         };
 
-        window.closeUserDetailModal = () => {
+        window.closeUserDetailModal = function() {
             document.getElementById('userDetailModal').classList.add('hidden');
         };
 
-        // ========== إحصائيات متقدمة ==========
+        // ========== إحصائيات ==========
         async function loadAdminStats() {
             try {
                 const usersSnap = await getDocs(collection(db, "users"));
                 document.getElementById('totalUsers').innerText = usersSnap.size;
 
-                const now = new Date();
-                const today = new Date(now);
+                const today = new Date();
                 today.setHours(0, 0, 0, 0);
-                const weekStart = new Date(now);
-                weekStart.setDate(now.getDate() - now.getDay());
-                weekStart.setHours(0, 0, 0, 0);
-                const monthStart = new Date(now.getFullYear(), now.getMonth(), 1);
-
-                const ordersSnap = await getDocs(collection(db, "orders"));
-                let todayTotal = 0,
-                    weekTotal = 0,
-                    monthTotal = 0,
-                    totalRevenue = 0,
-                    totalOrders = 0;
-                ordersSnap.forEach(doc => {
-                    const o = doc.data();
-                    const date = o.timestamp?.toDate ? o.timestamp.toDate() : null;
-                    if (date) {
-                        if (date >= today) todayTotal += o.price || 0;
-                        if (date >= weekStart) weekTotal += o.price || 0;
-                        if (date >= monthStart) monthTotal += o.price || 0;
-                    }
-                    totalRevenue += o.price || 0;
-                    totalOrders++;
-                });
-
+                const todayOrders = await getDocs(query(collection(db, "orders"), where("timestamp", ">=", today)));
+                const todayTotal = todayOrders.docs.reduce((sum, doc) => sum + (doc.data().price || 0), 0);
                 document.getElementById('todaySales').innerText = todayTotal.toLocaleString();
-                document.getElementById('weekSales').innerText = weekTotal.toLocaleString();
-                document.getElementById('monthSales').innerText = monthTotal.toLocaleString();
-                document.getElementById('totalRevenue').innerText = totalRevenue.toLocaleString();
-                document.getElementById('totalOrders').innerText = totalOrders;
-
-                const avg = totalOrders > 0 ? Math.round(totalRevenue / totalOrders) : 0;
-                document.getElementById('avgOrder').innerText = avg.toLocaleString();
 
                 const pendingSnap = await getDocs(query(collection(db, "orders"), where("status", "==", "قيد الانتظار")));
                 document.getElementById('pendingOrders').innerText = pendingSnap.size;
@@ -1612,37 +1713,32 @@
         }
 
         function loadAdminOrders() {
-            onSnapshot(query(collection(db, "orders"), orderBy("timestamp", "desc")), (snap) => {
+            onSnapshot(query(collection(db, "orders"), where("status", "in", ["قيد الانتظار", "جاري المعالجة"]), orderBy(
+                "timestamp", "desc")), (snap) => {
                 const list = document.getElementById('adminOrdersList');
                 list.innerHTML = '';
                 if (snap.empty) {
-                    list.innerHTML = '<p class="text-dark-light text-center">لا توجد طلبات</p>';
+                    list.innerHTML = '<p class="text-dark-light text-center">لا توجد طلبات معلقة</p>';
                     return;
                 }
                 snap.forEach(d => {
                     const o = d.data();
-                    const statusClass = {
-                        'قيد الانتظار': 'pending',
-                        'جاري المعالجة': 'processing',
-                        'تم الشحن': 'shipped',
-                        'مكتمل': 'completed',
-                        'فشل': 'failed'
-                    } [o.status] || 'pending';
+                    const statusClass = o.status === 'قيد الانتظار' ? 'status-pending' : 'status-processing';
                     list.innerHTML += `
                                 <div class="bg-white/50 p-3 rounded-xl">
-                                    <div class="flex justify-between flex-wrap">
+                                    <div class="flex justify-between">
                                         <p class="font-bold text-dark">${o.product}</p>
-                                        <span class="order-status ${statusClass}">${o.status}</span>
+                                        <span class="order-status-badge ${statusClass}">${o.status}</span>
                                     </div>
                                     <p class="text-sm text-dark-light">👤 ${o.uName} | 🆔 ${o.gameID}</p>
+                                    <p class="text-sm text-dark-light">🔑 UID: ${o.uid || 'غير محدد'}</p>
                                     <p class="text-sm text-dark-light">📱 واتساب: ${o.whatsapp || 'غير محدد'}</p>
-                                    <p class="text-xs text-dark-light">📅 ${o.timestamp?.toDate ? new Date(o.timestamp.toDate()).toLocaleString() : 'الآن'}</p>
                                     <div class="flex gap-2 mt-2 flex-wrap">
-                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'جاري المعالجة')" class="bg-blue-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-blue-600">⚙️ معالجة</button>
-                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'تم الشحن')" class="bg-purple-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-purple-600">📦 شحن</button>
-                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'مكتمل')" class="bg-green-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-green-600">✅ مكتمل</button>
+                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'جاري المعالجة')" class="bg-blue-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-blue-600">🔄 جاري المعالجة</button>
+                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'مكتمل')" class="bg-green-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-green-600">✅ تم الشحن</button>
                                         <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'فشل', ${o.price})" class="bg-red-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-red-600">❌ إلغاء</button>
-                                        <button onclick="showOrderDetails('${d.id}')" class="bg-yellow-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-yellow-600">📄 تفاصيل</button>
+                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'بانتظار الدفع')" class="bg-purple-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-purple-600">💳 بانتظار الدفع</button>
+                                        <button onclick="showOrderDetails('${d.id}')" class="bg-gray-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-gray-600">📄 تفاصيل</button>
                                     </div>
                                 </div>
                             `;
@@ -1650,91 +1746,69 @@
             });
         }
 
-        window.updateOrderStatus = async (orderId, userId, status, refundAmount = 0) => {
+        window.updateOrderStatus = async function(orderId, userId, status, refundAmount = 0) {
             if (status === 'فشل' && refundAmount > 0) {
                 await updateDoc(doc(db, "users", userId), { balance: increment(refundAmount) });
             }
-            const orderRef = doc(db, "orders", orderId);
-            const orderSnap = await getDoc(orderRef);
-            const currentHistory = orderSnap.data()?.statusHistory || [];
-            currentHistory.push({
-                status: status,
-                timestamp: serverTimestamp()
-            });
-            await updateDoc(orderRef, {
-                status: status,
-                statusHistory: currentHistory,
-                updatedAt: serverTimestamp()
-            });
-            showToast(`✅ تم تحديث الطلب إلى ${status}`, 'success');
+            await updateDoc(doc(db, "orders", orderId), { status: status });
+            
+            // إرسال إشعار للعميل عبر واتساب
+            const orderSnap = await getDoc(doc(db, "orders", orderId));
+            if (orderSnap.exists()) {
+                const order = orderSnap.data();
+                if (order.whatsapp) {
+                    const statusMessages = {
+                        'جاري المعالجة': '🔄 طلبك قيد المعالجة حالياً',
+                        'مكتمل': '✅ تم تنفيذ طلبك بنجاح!',
+                        'فشل': '❌ تم إلغاء طلبك',
+                        'بانتظار الدفع': '💳 طلبك بانتظار تأكيد الدفع'
+                    };
+                    const msg = `📱 **تحديث حالة الطلب من MORRE STORE**\n\n📦 المنتج: ${order.product}\n📌 الحالة: ${statusMessages[status] || status}\n\nشكراً لتسوقك معنا!`;
+                    await fetch(`https://api.telegram.org/bot${TELEGRAM_TOKEN}/sendMessage`, {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            chat_id: TELEGRAM_CHAT_ID,
+                            text: `📱 **إشعار للعميل**\n📞 رقم: ${order.whatsapp}\n\n${msg}`,
+                            parse_mode: 'Markdown'
+                        })
+                    });
+                }
+            }
+            
+            alert(`✅ تم تحديث الطلب إلى ${status}`);
         };
 
-        window.showOrderDetails = async (orderId) => {
+        window.showOrderDetails = async function(orderId) {
             const orderSnap = await getDoc(doc(db, "orders", orderId));
             if (orderSnap.exists()) {
                 const o = orderSnap.data();
-                let trackingHtml = '';
-                if (o.statusHistory && o.statusHistory.length > 0) {
-                    trackingHtml = '<div class="tracking-timeline mt-3">';
-                    const statusLabels = {
-                        'قيد الانتظار': '⏳ قيد الانتظار',
-                        'جاري المعالجة': '⚙️ جاري المعالجة',
-                        'تم الشحن': '📦 تم الشحن',
-                        'مكتمل': '✅ مكتمل',
-                        'فشل': '❌ فشل'
-                    };
-                    const statuses = ['قيد الانتظار', 'جاري المعالجة', 'تم الشحن', 'مكتمل'];
-                    statuses.forEach(s => {
-                        const step = o.statusHistory.find(h => h.status === s);
-                        const isActive = o.status === s;
-                        const isCompleted = o.statusHistory.some(h => h.status === s);
-                        const className = isCompleted ? 'completed' : (isActive ? 'active' : '');
-                        const label = statusLabels[s] || s;
-                        const time = step?.timestamp?.toDate ? new Date(step.timestamp.toDate()).toLocaleString() :
-                            '';
-                        trackingHtml += `
-                                    <div class="tracking-step ${className}">
-                                        <div class="step-label">${label}</div>
-                                        ${time ? `<div class="step-time">${time}</div>` : ''}
-                                    </div>
-                                `;
-                    });
-                    if (o.status === 'فشل') {
-                        trackingHtml += `
-                                    <div class="tracking-step active">
-                                        <div class="step-label text-red-600">❌ فشل</div>
-                                        <div class="step-time">${o.updatedAt?.toDate ? new Date(o.updatedAt.toDate()).toLocaleString() : ''}</div>
-                                    </div>
-                                `;
-                    }
-                    trackingHtml += '</div>';
-                }
                 document.getElementById('orderDetailContent').innerHTML = `
                             <p><strong>المنتج:</strong> ${o.product}</p>
                             <p><strong>السعر:</strong> ${o.price} ج.س</p>
                             <p><strong>العميل:</strong> ${o.uName}</p>
                             <p><strong>أيدي اللعبة:</strong> ${o.gameID}</p>
+                            <p><strong>UID:</strong> ${o.uid || 'غير محدد'}</p>
                             <p><strong>اسم اللاعب:</strong> ${o.gameName}</p>
                             <p><strong>الاسم الحقيقي:</strong> ${o.realName}</p>
                             <p><strong>رقم واتساب:</strong> ${o.whatsapp || 'غير محدد'}</p>
-                            <p><strong>الحالة:</strong> <span class="order-status ${o.status === 'مكتمل' ? 'completed' : o.status === 'فشل' ? 'failed' : 'pending'}">${o.status}</span></p>
-                            ${trackingHtml}
+                            <p><strong>الحالة:</strong> ${o.status}</p>
                         `;
                 document.getElementById('orderDetailModal').classList.remove('hidden');
             }
         };
 
-        window.adminRecharge = async () => {
+        window.adminRecharge = async function() {
             const walletId = document.getElementById('targetWallet').value.trim();
             const amount = parseInt(document.getElementById('amountToAdd').value);
 
             if (!walletId || !amount) {
-                showToast('❌ أدخل رقم المحفظة والمبلغ', 'error');
+                alert("❌ أدخل رقم المحفظة والمبلغ");
                 return;
             }
 
             if (isNaN(amount) || amount <= 0) {
-                showToast('❌ المبلغ غير صحيح', 'error');
+                alert("❌ المبلغ غير صحيح");
                 return;
             }
 
@@ -1747,7 +1821,7 @@
                 querySnapshot = await getDocs(q);
 
                 if (querySnapshot.empty) {
-                    showToast('❌ رقم المحفظة غير موجود', 'error');
+                    alert("❌ رقم المحفظة غير موجود");
                     return;
                 }
             }
@@ -1760,14 +1834,14 @@
                     `💰 تأكيد شحن الرصيد\n\nالمستخدم: ${userName}\nالمبلغ: ${amount.toLocaleString()} ج.س\nالرصيد الحالي: ${currentBalance.toLocaleString()} ج.س\n\nهل تريد المتابعة؟`
                     )) {
                 await updateDoc(doc(db, "users", userDoc.id), { balance: increment(amount) });
-                showToast(`✅ تم شحن ${amount.toLocaleString()} ج.س بنجاح للمستخدم ${userName}`, 'success');
+                alert(`✅ تم شحن ${amount.toLocaleString()} ج.س بنجاح للمستخدم ${userName}`);
                 document.getElementById('targetWallet').value = '';
                 document.getElementById('amountToAdd').value = '';
                 loadAdminStats();
             }
         };
 
-        window.adminRechargeByEmail = async () => {
+        window.adminRechargeByEmail = async function() {
             const email = prompt("📧 أدخل البريد الإلكتروني للمستخدم:");
             if (!email) return;
 
@@ -1775,7 +1849,7 @@
             const snap = await getDocs(q);
 
             if (snap.empty) {
-                showToast('❌ البريد الإلكتروني غير موجود', 'error');
+                alert("❌ البريد الإلكتروني غير موجود");
                 return;
             }
 
@@ -1783,7 +1857,7 @@
             const amount = parseInt(prompt("💰 أدخل المبلغ المراد شحنه:"));
 
             if (!amount || amount <= 0) {
-                showToast('❌ مبلغ غير صحيح', 'error');
+                alert("❌ مبلغ غير صحيح");
                 return;
             }
 
@@ -1794,99 +1868,105 @@
                     `💰 تأكيد شحن الرصيد\n\nالمستخدم: ${userName}\nالمبلغ: ${amount.toLocaleString()} ج.س\nالرصيد الحالي: ${currentBalance.toLocaleString()} ج.س\n\nهل تريد المتابعة؟`
                     )) {
                 await updateDoc(doc(db, "users", userDoc.id), { balance: increment(amount) });
-                showToast(`✅ تم شحن ${amount.toLocaleString()} ج.س بنجاح للمستخدم ${userName}`, 'success');
+                alert(`✅ تم شحن ${amount.toLocaleString()} ج.س بنجاح للمستخدم ${userName}`);
                 loadAdminStats();
             }
         };
 
+        // ========== نظام طلبات العميل مع التصفية ==========
         function loadUserHistory(uid) {
             onSnapshot(query(collection(db, "orders"), where("uID", "==", uid), orderBy("timestamp", "desc")), (snap) => {
                 const list = document.getElementById('userOrdersList');
+                let orders = [];
+                snap.forEach(d => {
+                    orders.push({ id: d.id, ...d.data() });
+                });
+
+                // تطبيق الفلتر
+                if (currentFilter !== 'all') {
+                    orders = orders.filter(o => o.status === currentFilter);
+                }
+
                 list.innerHTML = '';
-                if (snap.empty) {
+                if (orders.length === 0) {
                     list.innerHTML = '<div class="text-center text-dark-light py-8">لا توجد طلبات سابقة</div>';
                     return;
                 }
-                snap.forEach(d => {
-                    const o = d.data();
-                    const statusClass = {
-                        'قيد الانتظار': 'pending',
-                        'جاري المعالجة': 'processing',
-                        'تم الشحن': 'shipped',
-                        'مكتمل': 'completed',
-                        'فشل': 'failed'
-                    } [o.status] || 'pending';
-                    const statusIcon = {
-                        'قيد الانتظار': '⏳',
-                        'جاري المعالجة': '⚙️',
-                        'تم الشحن': '📦',
-                        'مكتمل': '✅',
-                        'فشل': '❌'
-                    } [o.status] || '⏳';
-                    const date = o.timestamp?.toDate ? new Date(o.timestamp.toDate()).toLocaleString() : 'الآن';
+
+                orders.forEach(o => {
+                    const statusClass = o.status === 'مكتمل' ? 'status-completed' :
+                        o.status === 'فشل' ? 'status-failed' :
+                        o.status === 'جاري المعالجة' ? 'status-processing' :
+                        o.status === 'بانتظار الدفع' ? 'status-waiting-payment' :
+                        'status-pending';
+                    
+                    const statusIcon = o.status === 'مكتمل' ? '✅' :
+                        o.status === 'فشل' ? '❌' :
+                        o.status === 'جاري المعالجة' ? '🔄' :
+                        o.status === 'بانتظار الدفع' ? '💳' :
+                        '⏳';
+
                     list.innerHTML += `
                                 <div class="glass p-4 rounded-2xl">
-                                    <div class="flex justify-between items-start flex-wrap">
+                                    <div class="flex justify-between items-start">
                                         <div>
-                                            <p class="font-bold text-dark">${o.product}</p>
+                                            <p class="font-bold text-dark text-lg">${o.product}</p>
                                             <p class="text-xs text-dark-light">🆔 ${o.gameID}</p>
+                                            <p class="text-xs text-dark-light">🔑 UID: ${o.uid || 'غير محدد'}</p>
                                         </div>
                                         <div class="text-left">
-                                            <span class="order-status ${statusClass}">${statusIcon} ${o.status}</span>
-                                            <p class="text-xs text-dark-light mt-1">${date}</p>
+                                            <span class="order-status-badge ${statusClass}">${statusIcon} ${o.status}</span>
+                                            <p class="text-sm text-dark-light mt-1">${o.timestamp?.toDate ? new Date(o.timestamp.toDate()).toLocaleDateString('ar-SD') : ''}</p>
                                         </div>
                                     </div>
                                     <div class="grid grid-cols-2 gap-2 mt-3 text-sm">
-                                        <div class="text-dark">💰 ${o.price.toLocaleString()} ج.س</div>
+                                        <div class="text-dark font-bold">💰 ${o.price.toLocaleString()} ج.س</div>
                                         <div class="text-dark">📱 ${o.whatsapp || 'غير محدد'}</div>
                                     </div>
-                                    ${o.statusHistory && o.statusHistory.length > 1 ? `
-                                        <button onclick="showOrderDetails('${d.id}')" class="mt-2 text-xs text-yellow-dark hover:text-yellow-600 font-bold">
-                                            📋 عرض التتبع
-                                        </button>
-                                    ` : ''}
+                                    <button onclick="showOrderDetails('${o.id}')" class="mt-2 text-yellow-dark hover:underline text-sm">📄 عرض التفاصيل</button>
                                 </div>
                             `;
                 });
             });
         }
 
-        // ========== سياسات ==========
+        // ========== فلتر الطلبات ==========
+        document.querySelectorAll('.order-filter-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.order-filter-btn').forEach(b => b.classList.remove('active-filter'));
+                this.classList.add('active-filter');
+                currentFilter = this.dataset.filter;
+                if (userData) {
+                    loadUserHistory(auth.currentUser.uid);
+                }
+            });
+        });
+
+        // ========== دوال السياسات ==========
         const policies = {
             terms: { title: "📜 شروط الخدمة",
             content: "<p>باستخدامك للمنصة توافق على الشروط التالية: جميع عمليات الشحن خلال 24 ساعة، لا نضمن استرجاع الرصيد بعد إتمام الشراء.</p>" },
             privacy: { title: "🔒 سياسة الخصوصية",
             content: "<p>نلتزم بحماية بياناتك الشخصية ولا نشاركها مع أي طرف ثالث.</p>" },
             refund: { title: "💰 سياسة الاسترجاع",
-            content: "<p>في حال تأخر الشحن أكثر من 48 ساعة، يمكنك طلب استرجاع كامل.</p>" }
+            content: "<p>في حال تأخر الشحن أكثر من 48 ساعة، يمكنك طلب استرجاع كامل.</p>" },
+            about: { title: "🏢 عن المتجر", content: "<p>MORRE STORE متخصص في شحن الألعاب والخدمات الرقمية في السودان.</p>" }
         };
-        window.showPolicy = (type) => {
+        window.showPolicy = function(type) {
             const p = policies[type];
             document.getElementById('policy-title').innerText = p.title;
             document.getElementById('policy-content').innerHTML = p.content;
             document.getElementById('policy-modal').classList.remove('hidden');
         };
-        window.closePolicyModal = () => document.getElementById('policy-modal').classList.add('hidden');
-        window.closeOrderDetailModal = () => document.getElementById('orderDetailModal').classList.add('hidden');
-
-        // ========== الأسئلة الشائعة ==========
-        window.showFAQ = () => {
-            document.getElementById('faq-modal').classList.remove('hidden');
+        window.closePolicyModal = function() {
+            document.getElementById('policy-modal').classList.add('hidden');
         };
-        window.closeFAQModal = () => {
-            document.getElementById('faq-modal').classList.add('hidden');
-        };
-
-        // ========== عن المتجر ==========
-        window.showAbout = () => {
-            document.getElementById('about-modal').classList.remove('hidden');
-        };
-        window.closeAboutModal = () => {
-            document.getElementById('about-modal').classList.add('hidden');
+        window.closeOrderDetailModal = function() {
+            document.getElementById('orderDetailModal').classList.add('hidden');
         };
 
         // ========== التنقل بين الصفحات ==========
-        window.showCategory = (category) => {
+        window.showCategory = function(category) {
             document.getElementById('homePage').classList.add('hidden');
             document.querySelectorAll('.category-page').forEach(el => el.classList.remove('active'));
             const target = document.getElementById(`category-${category}`);
@@ -1894,212 +1974,10 @@
             window.scrollTo({ top: 0, behavior: 'smooth' });
         };
 
-        window.goHome = () => {
+        window.goHome = function() {
             document.getElementById('homePage').classList.remove('hidden');
             document.querySelectorAll('.category-page').forEach(el => el.classList.remove('active'));
             window.scrollTo({ top: 0, behavior: 'smooth' });
-        };
-
-        // ========== أحداث تسجيل الدخول ==========
-        // تسجيل بالبريد
-        document.getElementById('email-login-btn').onclick = async () => {
-            const email = document.getElementById('login-email').value;
-            const pwd = document.getElementById('login-password').value;
-            if (!email || !pwd) { showToast('❌ الرجاء إدخال البريد الإلكتروني وكلمة المرور', 'error'); return; }
-            try {
-                await signInWithEmailAndPassword(auth, email, pwd);
-                showToast('✅ تم تسجيل الدخول بنجاح', 'success');
-            } catch (e) {
-                if (e.code === 'auth/user-not-found') {
-                    showToast('❌ البريد الإلكتروني غير مسجل', 'error');
-                } else if (e.code === 'auth/wrong-password') {
-                    showToast('❌ كلمة المرور غير صحيحة', 'error');
-                } else {
-                    showToast('❌ ' + e.message, 'error');
-                }
-            }
-        };
-
-        document.getElementById('forgot-password-btn').onclick = async () => {
-            const email = document.getElementById('login-email').value;
-            if (!email) { showToast('❌ الرجاء إدخال البريد الإلكتروني', 'error'); return; }
-            try {
-                await sendPasswordResetEmail(auth, email);
-                showToast('✅ تم إرسال رابط إعادة تعيين كلمة المرور إلى بريدك', 'success');
-            } catch (e) {
-                showToast('❌ حدث خطأ: ' + e.message, 'error');
-            }
-        };
-
-        // إنشاء حساب بالبريد
-        document.getElementById('email-register-btn').onclick = async () => {
-            const name = document.getElementById('reg-name').value.trim();
-            const email = document.getElementById('reg-email').value.trim();
-            const pwd = document.getElementById('reg-password').value;
-            const confirmPwd = document.getElementById('reg-confirm-password').value;
-
-            if (!name || !email || !pwd || !confirmPwd) { showToast('❌ جميع الحقول مطلوبة', 'error'); return; }
-
-            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-            if (!emailRegex.test(email)) { showToast('❌ البريد الإلكتروني غير صحيح', 'error'); return; }
-
-            if (pwd.length < 8) { showToast('❌ كلمة المرور يجب أن تكون 8 أحرف على الأقل', 'error'); return; }
-            if (!/[0-9]/.test(pwd)) { showToast('❌ كلمة المرور يجب أن تحتوي على رقم واحد على الأقل', 'error'); return; }
-            if (pwd !== confirmPwd) { showToast('❌ كلمة المرور غير متطابقة مع التأكيد', 'error'); return; }
-
-            try {
-                const cred = await createUserWithEmailAndPassword(auth, email, pwd);
-                const walletID = Math.floor(100000 + Math.random() * 900000).toString();
-
-                await sendEmailVerification(cred.user);
-                showToast('📧 تم إرسال رابط التأكيد إلى بريدك. يرجى تأكيد البريد لتتمكن من الدخول.', 'info');
-
-                await setDoc(doc(db, "users", cred.user.uid), {
-                    name: name,
-                    email: email,
-                    img: 'https://via.placeholder.com/100',
-                    walletID: walletID,
-                    balance: 0,
-                    emailVerified: false,
-                    createdAt: serverTimestamp()
-                });
-                showToast(`✅ تم إنشاء الحساب بنجاح!\nرقم محفظتك: #${walletID}`, 'success');
-            } catch (e) {
-                if (e.code === 'auth/email-already-in-use') {
-                    showToast('❌ البريد الإلكتروني مستخدم بالفعل', 'error');
-                } else {
-                    showToast('❌ ' + e.message, 'error');
-                }
-            }
-        };
-
-        // ========== تسجيل برقم الجوال (مع Recaptcha) ==========
-        document.getElementById('phone-login-btn').onclick = async () => {
-            const phoneNumber = document.getElementById('phone-number').value.trim();
-            if (!phoneNumber) { showToast('❌ الرجاء إدخال رقم الجوال', 'error'); return; }
-
-            const phoneRegex = /^[0-9]{10,15}$/;
-            if (!phoneRegex.test(phoneNumber)) { showToast('❌ رقم الجوال غير صحيح (10-15 رقم)', 'error'); return; }
-
-            try {
-                let formattedPhone = phoneNumber;
-                if (!phoneNumber.startsWith('+')) {
-                    if (phoneNumber.startsWith('0')) {
-                        formattedPhone = '+249' + phoneNumber.substring(1);
-                    } else {
-                        formattedPhone = '+249' + phoneNumber;
-                    }
-                }
-
-                // تهيئة RecaptchaVerifier
-                const verifier = initializeRecaptcha();
-                if (!verifier) {
-                    showToast('❌ خطأ في تهيئة التحقق. حاول مرة أخرى.', 'error');
-                    return;
-                }
-
-                const result = await signInWithPhoneNumber(auth, formattedPhone, verifier);
-                phoneConfirmationResult = result;
-                document.getElementById('phone-verification').classList.remove('hidden');
-                showToast('✅ تم إرسال رمز التفعيل إلى جوالك', 'success');
-            } catch (e) {
-                console.error('Phone auth error:', e);
-                if (e.code === 'auth/invalid-phone-number') {
-                    showToast('❌ رقم الجوال غير صحيح', 'error');
-                } else if (e.code === 'auth/too-many-requests') {
-                    showToast('❌ تم إرسال العديد من الرموز. حاول لاحقاً.', 'error');
-                } else if (e.code === 'auth/app-verification-disabled-for-testing') {
-                    showToast('❌ وضع الاختبار غير مفعل. يرجى تفعيل Phone في Firebase.', 'error');
-                } else {
-                    showToast('❌ ' + (e.message || 'حدث خطأ في إرسال الرمز'), 'error');
-                }
-                // إعادة تهيئة Recaptcha في حالة الفشل
-                recaptchaVerifier = null;
-            }
-        };
-
-        document.getElementById('phone-verify-btn').onclick = async () => {
-            const otp = document.getElementById('phone-otp').value.trim();
-            if (!otp) { showToast('❌ الرجاء إدخال رمز التفعيل', 'error'); return; }
-
-            try {
-                const result = await phoneConfirmationResult.confirm(otp);
-                const user = result.user;
-                const userRef = doc(db, "users", user.uid);
-                const userSnap = await getDoc(userRef);
-
-                if (!userSnap.exists()) {
-                    const walletID = Math.floor(100000 + Math.random() * 900000).toString();
-                    await setDoc(userRef, {
-                        name: user.displayName || 'مستخدم',
-                        email: user.email || '',
-                        phone: user.phoneNumber,
-                        img: user.photoURL || 'https://via.placeholder.com/100',
-                        walletID: walletID,
-                        balance: 0,
-                        createdAt: serverTimestamp()
-                    });
-                    showToast(`✅ تم إنشاء حسابك!\nرقم محفظتك: #${walletID}`, 'success');
-                } else {
-                    showToast('✅ تم تسجيل الدخول بنجاح', 'success');
-                }
-                document.getElementById('phone-verification').classList.add('hidden');
-                document.getElementById('phone-otp').value = '';
-                recaptchaVerifier = null;
-            } catch (e) {
-                if (e.code === 'auth/invalid-verification-code') {
-                    showToast('❌ رمز التفعيل غير صحيح', 'error');
-                } else {
-                    showToast('❌ ' + (e.message || 'حدث خطأ في التحقق'), 'error');
-                }
-            }
-        };
-
-        // ========== تسجيل عبر واتساب ==========
-        document.getElementById('phone-whatsapp-btn').onclick = () => {
-            const phone = document.getElementById('phone-number').value.trim();
-            if (!phone) { showToast('❌ الرجاء إدخال رقم الجوال أولاً', 'error'); return; }
-            const message = `مرحباً، أريد إنشاء حساب في MORRE STORE\nرقم الجوال: ${phone}`;
-            window.open(`https://wa.me/2490991305468?text=${encodeURIComponent(message)}`, '_blank');
-        };
-
-        // ========== تسجيل بجوجل ==========
-        document.getElementById('google-login-btn').onclick = async () => {
-            try {
-                const result = await signInWithPopup(auth, provider);
-                const userRef = doc(db, "users", result.user.uid);
-                const userSnap = await getDoc(userRef);
-                if (!userSnap.exists()) {
-                    const walletID = Math.floor(100000 + Math.random() * 900000).toString();
-                    await setDoc(userRef, {
-                        name: result.user.displayName || result.user.email.split('@')[0],
-                        email: result.user.email,
-                        img: result.user.photoURL || 'https://via.placeholder.com/100',
-                        walletID: walletID,
-                        balance: 0,
-                        emailVerified: result.user.emailVerified || false,
-                        createdAt: serverTimestamp()
-                    });
-                    showToast(`✅ تم إنشاء حسابك!\nرقم محفظتك: #${walletID}`, 'success');
-                }
-            } catch (e) {
-                if (e.code === 'auth/popup-closed-by-user') {
-                    showToast('❌ تم إغلاق نافذة تسجيل الدخول', 'info');
-                } else if (e.code === 'auth/unauthorized-domain') {
-                    showToast('❌ النطاق غير مسموح. تأكد من إضافة redeemstore.netlify.app في Authorized Domains', 'error');
-                } else {
-                    showToast('❌ خطأ في تسجيل الدخول بجوجل: ' + e.message, 'error');
-                }
-                console.error('Google login error:', e);
-            }
-        };
-
-        document.getElementById('logout-btn').onclick = async () => {
-            await signOut(auth);
-            document.getElementById('main-app').classList.add('hidden');
-            document.getElementById('auth-screen').classList.remove('hidden');
-            goHome();
-            showToast('✅ تم تسجيل الخروج', 'info');
         };
 
         // ========== الشريط الجانبي ==========
@@ -2159,10 +2037,6 @@
             });
         });
 
-        // بحث وترتيب المنتجات
-        document.getElementById('searchProduct')?.addEventListener('input', loadManageProducts);
-        document.getElementById('sortProducts')?.addEventListener('change', loadManageProducts);
-
         // ========== تبديل تبويبات تسجيل الدخول ==========
         document.querySelectorAll('.auth-tab').forEach(tab => {
             tab.addEventListener('click', () => {
@@ -2171,16 +2045,21 @@
                 const target = tab.getAttribute('data-tab');
                 document.getElementById('login-form').style.display = target === 'login' ? 'block' : 'none';
                 document.getElementById('register-form').style.display = target === 'register' ? 'block' : 'none';
-                document.getElementById('phone-form').style.display = target === 'phone' ? 'block' : 'none';
-                if (target === 'phone') {
-                    setTimeout(initializeRecaptcha, 500);
-                }
+                
+                // إخفاء حقول OTP عند التبديل
+                document.getElementById('login-otp-container').style.display = 'none';
+                document.getElementById('send-login-otp-btn').style.display = 'none';
+                document.getElementById('verify-login-otp-btn').style.display = 'none';
+                document.getElementById('email-login-btn').style.display = 'block';
+                document.getElementById('register-otp-container').style.display = 'none';
+                document.getElementById('send-register-otp-btn').style.display = 'none';
+                document.getElementById('verify-register-otp-btn').style.display = 'none';
+                document.getElementById('email-register-btn').style.display = 'block';
             });
         });
+        document.querySelectorAll('.auth-tab')[0].classList.add('active-tab');
         document.getElementById('login-form').style.display = 'block';
         document.getElementById('register-form').style.display = 'none';
-        document.getElementById('phone-form').style.display = 'none';
-        document.querySelectorAll('.auth-tab')[0].classList.add('active-tab');
 
         // ========== بدء التشغيل ==========
         function startEngine(user) {
@@ -2213,32 +2092,26 @@
             const loading = document.getElementById('loading-screen');
             const authScr = document.getElementById('auth-screen');
             const appScr = document.getElementById('main-app');
+
             if (user) {
-                if (!user.emailVerified && user.email) {
-                    showToast('📧 يرجى تأكيد بريدك الإلكتروني أولاً. تم إرسال رابط التأكيد.', 'info');
-                    await signOut(auth);
-                    loading.classList.add('hidden');
-                    authScr.classList.remove('hidden');
-                    appScr.classList.add('hidden');
-                    return;
+                // التحقق من البريد الإلكتروني
+                await user.reload();
+                if (!user.emailVerified) {
+                    // نسمح للمستخدم بالدخول لأنه استخدم OTP
+                    // لكننا نرسل رمز تحقق إضافي
+                    const userRef = doc(db, "users", user.uid);
+                    const userSnap = await getDoc(userRef);
+                    if (!userSnap.exists()) {
+                        // إذا لم يكن هناك حساب في Firestore، نطلب تسجيل الدخول مجدداً
+                        await signOut(auth);
+                        loading.classList.add('hidden');
+                        authScr.classList.remove('hidden');
+                        appScr.classList.add('hidden');
+                        alert('⚠️ يرجى تسجيل الدخول مرة أخرى لإكمال عملية التحقق');
+                        return;
+                    }
                 }
 
-                const userRef = doc(db, "users", user.uid);
-                const userSnap = await getDoc(userRef);
-                if (!userSnap.exists()) {
-                    const walletID = Math.floor(100000 + Math.random() * 900000).toString();
-                    await setDoc(userRef, {
-                        name: user.displayName || user.email?.split('@')[0] || 'مستخدم',
-                        email: user.email || '',
-                        phone: user.phoneNumber || '',
-                        img: user.photoURL || 'https://via.placeholder.com/100',
-                        walletID: walletID,
-                        balance: 0,
-                        emailVerified: user.emailVerified || false,
-                        createdAt: serverTimestamp()
-                    });
-                    showToast(`✨ مرحباً بك في MORRE STORE!\n📱 رقم محفظتك: #${walletID}`, 'success');
-                }
                 loading.classList.add('hidden');
                 authScr.classList.add('hidden');
                 appScr.classList.remove('hidden');
@@ -2250,6 +2123,7 @@
             }
         });
 
+        // ========== التحقق من WebView ==========
         function isWebView() {
             const ua = navigator.userAgent;
             if (ua.indexOf('wv') > -1) return true;
@@ -2264,8 +2138,25 @@
         }
         document.getElementById('open-browser-btn').onclick = () => { window.location.href = window.location.href; };
         document.getElementById('copy-link-btn').onclick = () => {
-            navigator.clipboard.writeText(window.location.href).then(() => showToast('✅ تم نسخ الرابط', 'success'));
+            navigator.clipboard.writeText(window.location.href).then(() => alert('تم نسخ الرابط'));
         };
+
+        // إضافة بعض الستايلات الإضافية للفلتر
+        const style = document.createElement('style');
+        style.textContent = `
+            .active-filter {
+                background: #f59e0b !important;
+                color: white !important;
+                border-color: #f59e0b !important;
+            }
+            .order-filter-btn {
+                transition: all 0.2s;
+            }
+            .order-filter-btn:hover {
+                transform: translateY(-2px);
+            }
+        `;
+        document.head.appendChild(style);
     </script>
 </body>
-                                </html>
+                            </html>
