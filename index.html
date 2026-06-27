@@ -527,6 +527,79 @@
                 font-size: 1.2rem;
             }
         }
+        .order-status {
+            display: inline-block;
+            padding: 0.25rem 0.75rem;
+            border-radius: 9999px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .order-status.pending {
+            background: #fef3c7;
+            color: #d97706;
+        }
+        .order-status.processing {
+            background: #dbeafe;
+            color: #2563eb;
+        }
+        .order-status.completed {
+            background: #d1fae5;
+            color: #059669;
+        }
+        .order-status.failed {
+            background: #fee2e2;
+            color: #dc2626;
+        }
+        .order-status.shipped {
+            background: #e0e7ff;
+            color: #4f46e5;
+        }
+        .tracking-timeline {
+            position: relative;
+            padding-right: 20px;
+        }
+        .tracking-timeline::before {
+            content: '';
+            position: absolute;
+            right: 5px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: #e5e7eb;
+        }
+        .tracking-step {
+            position: relative;
+            padding: 0.5rem 0;
+            padding-right: 20px;
+        }
+        .tracking-step::before {
+            content: '';
+            position: absolute;
+            right: -2px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #e5e7eb;
+            border: 2px solid white;
+        }
+        .tracking-step.active::before {
+            background: #f59e0b;
+            box-shadow: 0 0 0 3px rgba(245, 158, 11, 0.3);
+        }
+        .tracking-step.completed::before {
+            background: #059669;
+        }
+        .tracking-step .step-label {
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: #1e293b;
+        }
+        .tracking-step .step-time {
+            font-size: 0.7rem;
+            color: #94a3b8;
+        }
     </style>
 </head>
 <body>
@@ -554,23 +627,41 @@
                 <span class="brand-name">MORRE</span> <span class="brand-name-white">STORE</span>
             </h1>
             <p class="text-center text-dark-light text-sm mb-6">متجر شامل للخدمات الرقمية</p>
-            <div class="flex gap-4 border-b border-dark/10 mb-6">
-                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light" data-tab="login">تسجيل دخول</button>
-                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light" data-tab="register">إنشاء حساب</button>
+            <div class="flex gap-2 border-b border-dark/10 mb-6 overflow-x-auto">
+                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light whitespace-nowrap" data-tab="login">تسجيل دخول</button>
+                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light whitespace-nowrap" data-tab="register">إنشاء حساب</button>
+                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light whitespace-nowrap" data-tab="phone">تسجيل برقم الجوال</button>
             </div>
+            <!-- تسجيل دخول بالبريد -->
             <div id="login-form" class="space-y-4">
                 <input type="email" id="login-email" placeholder="البريد الإلكتروني" dir="ltr">
                 <input type="password" id="login-password" placeholder="كلمة المرور" dir="ltr">
                 <button id="email-login-btn" class="w-full action-btn">تسجيل الدخول</button>
                 <button id="forgot-password-btn" class="w-full text-sm text-yellow-dark hover:text-yellow-600 font-bold">نسيت كلمة المرور؟</button>
             </div>
+            <!-- إنشاء حساب -->
             <div id="register-form" class="space-y-4 hidden">
                 <input type="text" id="reg-name" placeholder="الاسم الكامل">
                 <input type="email" id="reg-email" placeholder="البريد الإلكتروني" dir="ltr">
-                <input type="password" id="reg-password" placeholder="كلمة المرور" dir="ltr">
+                <input type="password" id="reg-password" placeholder="كلمة المرور (8 أحرف على الأقل)" dir="ltr">
                 <input type="password" id="reg-confirm-password" placeholder="تأكيد كلمة المرور" dir="ltr">
                 <div id="recaptcha-container"></div>
                 <button id="email-register-btn" class="w-full action-btn">إنشاء حساب</button>
+            </div>
+            <!-- تسجيل برقم الجوال -->
+            <div id="phone-form" class="space-y-4 hidden">
+                <div id="phone-auth-container">
+                    <input type="tel" id="phone-number" placeholder="رقم الجوال (مثال: 0912345678)" dir="ltr">
+                    <div id="recaptcha-phone-container"></div>
+                    <button id="phone-login-btn" class="w-full action-btn">إرسال رمز التفعيل</button>
+                    <div id="phone-verification" class="hidden mt-3">
+                        <input type="text" id="phone-otp" placeholder="أدخل رمز التفعيل" dir="ltr" maxlength="6">
+                        <button id="phone-verify-btn" class="w-full action-btn mt-2">تحقق</button>
+                    </div>
+                </div>
+                <button id="phone-whatsapp-btn" class="w-full action-btn-outline flex items-center justify-center gap-2">
+                    <i class="fab fa-whatsapp text-green-500"></i> تسجيل عبر واتساب
+                </button>
             </div>
             <div class="relative my-6"><div class="absolute inset-0 flex items-center"><div class="w-full border-t border-dark/10"></div></div><div class="relative flex justify-center text-xs"><span class="bg-white/60 px-2 text-dark-light">أو</span></div></div>
             <button id="google-login-btn" class="w-full bg-white text-gray-800 py-3 rounded-xl font-bold flex items-center justify-center gap-2 border border-gray-200"><i class="fab fa-google"></i> دخول عبر جوجل</button>
@@ -757,74 +848,92 @@
                 </div>
             </div>
 
-            <!-- صفحات الخدمات -->
+            <!-- صفحات الخدمات (بدون منتجات) -->
             <div id="category-pubg" class="category-page">
                 <div class="flex items-center gap-4 mb-6">
                     <button onclick="goHome()" class="back-btn"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 class="page-title">🎮 شحن ببجي PUBG</h2>
                 </div>
-                <div id="pubgGrid" class="product-grid"></div>
+                <div id="pubgGrid" class="product-grid">
+                    <p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>
+                </div>
             </div>
             <div id="category-freefire" class="category-page">
                 <div class="flex items-center gap-4 mb-6">
                     <button onclick="goHome()" class="back-btn"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 class="page-title">🔥 شحن فري فاير FreeFire</h2>
                 </div>
-                <div id="freefireGrid" class="product-grid"></div>
+                <div id="freefireGrid" class="product-grid">
+                    <p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>
+                </div>
             </div>
             <div id="category-efootball" class="category-page">
                 <div class="flex items-center gap-4 mb-6">
                     <button onclick="goHome()" class="back-btn"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 class="page-title">⚽ شحن eFootball</h2>
                 </div>
-                <div id="efootballGrid" class="product-grid"></div>
+                <div id="efootballGrid" class="product-grid">
+                    <p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>
+                </div>
             </div>
             <div id="category-clash" class="category-page">
                 <div class="flex items-center gap-4 mb-6">
                     <button onclick="goHome()" class="back-btn"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 class="page-title">👑 شحن كلاش أوف كلانس</h2>
                 </div>
-                <div id="clashGrid" class="product-grid"></div>
+                <div id="clashGrid" class="product-grid">
+                    <p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>
+                </div>
             </div>
             <div id="category-netflix" class="category-page">
                 <div class="flex items-center gap-4 mb-6">
                     <button onclick="goHome()" class="back-btn"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 class="page-title">🎬 اشتراك نتفليكس</h2>
                 </div>
-                <div id="netflixGrid" class="product-grid"></div>
+                <div id="netflixGrid" class="product-grid">
+                    <p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>
+                </div>
             </div>
             <div id="category-googleplay" class="category-page">
                 <div class="flex items-center gap-4 mb-6">
                     <button onclick="goHome()" class="back-btn"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 class="page-title">🛍️ بطاقات جوجل بلاي</h2>
                 </div>
-                <div id="googleplayGrid" class="product-grid"></div>
+                <div id="googleplayGrid" class="product-grid">
+                    <p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>
+                </div>
             </div>
             <div id="category-redotpay" class="category-page">
                 <div class="flex items-center gap-4 mb-6">
                     <button onclick="goHome()" class="back-btn"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 class="page-title">💳 فيزا Redotpay الافتراضية</h2>
                 </div>
-                <div id="redotpayGrid" class="product-grid"></div>
+                <div id="redotpayGrid" class="product-grid">
+                    <p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>
+                </div>
             </div>
             <div id="category-tiktok" class="category-page">
                 <div class="flex items-center gap-4 mb-6">
                     <button onclick="goHome()" class="back-btn"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 class="page-title">🎵 عملات تيك توك</h2>
                 </div>
-                <div id="tiktokGrid" class="product-grid"></div>
+                <div id="tiktokGrid" class="product-grid">
+                    <p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>
+                </div>
             </div>
             <div id="category-ai" class="category-page">
                 <div class="flex items-center gap-4 mb-6">
                     <button onclick="goHome()" class="back-btn"><i class="fas fa-arrow-right"></i> رجوع</button>
                     <h2 class="page-title">🤖 اشتراكات الذكاء الاصطناعي</h2>
                 </div>
-                <div id="aiGrid" class="product-grid"></div>
+                <div id="aiGrid" class="product-grid">
+                    <p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>
+                </div>
             </div>
 
-            <!-- سجل الطلبات -->
+            <!-- سجل الطلبات مع نظام تتبع -->
             <div class="mt-8">
-                <h3 class="text-2xl font-black text-dark mb-4 border-r-4 border-yellow-dark pr-3">📋 تاريخ طلباتي</h3>
+                <h3 class="text-2xl font-black text-dark mb-4 border-r-4 border-yellow-dark pr-3">📋 طلباتي</h3>
                 <div id="userOrdersList" class="space-y-4"></div>
             </div>
         </main>
@@ -843,6 +952,7 @@
             <a href="#" onclick="toggleSidebar(false); document.getElementById('userOrdersList').scrollIntoView({behavior:'smooth'});" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fas fa-shopping-bag w-6"></i> طلباتي</a>
             <a href="#" onclick="openWalletWhatsApp(); toggleSidebar(false);" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fas fa-wallet w-6 text-yellow-dark"></i> شحن المحفظة</a>
             <a href="https://wa.me/2490991305468?text=مرحباً%20أحتاج%20مساعدة" target="_blank" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fab fa-whatsapp w-6 text-green-500"></i> خدمة العملاء</a>
+            <a href="#" onclick="toggleSidebar(false); showFAQ();" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fas fa-question-circle w-6"></i> الأسئلة الشائعة</a>
             <a href="#" onclick="toggleSidebar(false); showAbout();" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl"><i class="fas fa-info-circle w-6"></i> عن المتجر</a>
             <div onclick="toggleSidebar(false); showPolicy('terms');" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl cursor-pointer"><i class="fas fa-file-alt w-6"></i> السياسات</div>
             <div onclick="toggleTheme()" class="flex items-center gap-3 p-3 hover:bg-yellow-50 rounded-xl cursor-pointer" id="themeToggleBtn"><i class="fas fa-moon w-6"></i> الوضع الليلي</div>
@@ -855,6 +965,7 @@
                 <a href="#" onclick="showPolicy('terms');return false;">شروط الخدمة</a>
                 <a href="#" onclick="showPolicy('privacy');return false;">سياسة الخصوصية</a>
                 <a href="#" onclick="showPolicy('refund');return false;">سياسة الاسترجاع</a>
+                <a href="#" onclick="showFAQ();return false;">الأسئلة الشائعة</a>
                 <a href="#" onclick="showAbout();return false;">عن المتجر</a>
             </div>
             <div class="mt-1">© 2025 MORRE STORE - جميع الحقوق محفوظة</div>
@@ -867,6 +978,43 @@
             <div class="flex justify-between items-center mb-4"><h3 id="policy-title" class="text-xl font-bold"></h3><button onclick="closePolicyModal()" class="text-dark-light hover:text-dark"><i class="fas fa-times text-2xl"></i></button></div>
             <div id="policy-content" class="text-dark-light"></div>
             <button onclick="closePolicyModal()" class="mt-6 w-full bg-dark/5 py-2 rounded-xl">إغلاق</button>
+        </div>
+    </div>
+
+    <!-- مودال الأسئلة الشائعة -->
+    <div id="faq-modal" class="hidden fixed inset-0 bg-black/30 backdrop-blur z-50 flex items-center justify-center p-4">
+        <div class="glass w-full max-w-md p-6 rounded-3xl text-dark max-h-[80vh] overflow-y-auto">
+            <div class="flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold">❓ الأسئلة الشائعة</h3>
+                <button onclick="closeFAQModal()" class="text-dark-light hover:text-dark"><i class="fas fa-times text-2xl"></i></button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <p class="font-bold text-yellow-dark">كيف أشحن محفظتي؟</p>
+                    <p class="text-dark-light text-sm">اضغط على زر "شحن المحفظة" في الصفحة الرئيسية، سيتم تحويلك إلى واتساب مع رقم محفظتك تلقائياً.</p>
+                </div>
+                <div>
+                    <p class="font-bold text-yellow-dark">كم تستغرق عملية الشحن؟</p>
+                    <p class="text-dark-light text-sm">تستغرق عملية الشحن من 5 إلى 30 دقيقة بعد تأكيد الدفع.</p>
+                </div>
+                <div>
+                    <p class="font-bold text-yellow-dark">كيف أتواصل مع الدعم الفني؟</p>
+                    <p class="text-dark-light text-sm">يمكنك التواصل عبر زر "خدمة العملاء" في الصفحة الرئيسية أو عبر واتساب على الرقم 0991305468.</p>
+                </div>
+                <div>
+                    <p class="font-bold text-yellow-dark">ماذا لو تأخر شحن طلبي؟</p>
+                    <p class="text-dark-light text-sm">إذا تأخر الشحن أكثر من 48 ساعة، يمكنك طلب استرجاع كامل للمبلغ.</p>
+                </div>
+                <div>
+                    <p class="font-bold text-yellow-dark">كيف أعرف حالة طلبي؟</p>
+                    <p class="text-dark-light text-sm">يمكنك متابعة حالة طلبك من خلال قسم "طلباتي" في الصفحة الرئيسية.</p>
+                </div>
+                <div>
+                    <p class="font-bold text-yellow-dark">هل يمكنني تغيير رقم هاتفي المسجل؟</p>
+                    <p class="text-dark-light text-sm">نعم، يمكنك التواصل مع خدمة العملاء لتغيير رقم الهاتف المسجل في حسابك.</p>
+                </div>
+            </div>
+            <button onclick="closeFAQModal()" class="mt-6 w-full bg-dark/5 py-2 rounded-xl">إغلاق</button>
         </div>
     </div>
 
@@ -900,7 +1048,7 @@
 
     <!-- مودال تفاصيل الطلب -->
     <div id="orderDetailModal" class="hidden fixed inset-0 bg-black/30 backdrop-blur z-50 flex items-center justify-center p-4">
-        <div class="glass w-full max-w-md p-6 rounded-3xl text-dark">
+        <div class="glass w-full max-w-md p-6 rounded-3xl text-dark max-h-[90vh] overflow-y-auto">
             <h3 class="text-xl font-bold mb-4">📄 تفاصيل الطلب</h3>
             <div id="orderDetailContent" class="space-y-2 text-sm"></div>
             <button onclick="closeOrderDetailModal()" class="mt-6 w-full bg-dark/5 py-2 rounded-xl">إغلاق</button>
@@ -958,8 +1106,8 @@
 
     <script type="module">
         import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-        import { getFirestore, doc, onSnapshot, collection, query, where, getDocs, updateDoc, increment, setDoc, serverTimestamp, orderBy, getDoc, runTransaction, deleteDoc } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
-        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
+        import { getFirestore, doc, onSnapshot, collection, query, where, getDocs, updateDoc, increment, setDoc, serverTimestamp, orderBy, getDoc, runTransaction, deleteDoc, Timestamp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore.js";
+        import { getAuth, signInWithPopup, GoogleAuthProvider, onAuthStateChanged, signOut, signInWithEmailAndPassword, createUserWithEmailAndPassword, sendPasswordResetEmail, RecaptchaVerifier, signInWithPhoneNumber, sendEmailVerification } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-auth.js";
 
         const firebaseConfig = {
             apiKey: "AIzaSyC0jzecEwKgHpxHpTi8Y-_bwwfzVdtgf3E",
@@ -981,7 +1129,7 @@
         let userData = null;
         let currentOrder = null;
         let editingProductId = null;
-        let allProductsData = {};
+        let phoneConfirmationResult = null;
 
         // ========== Toast Notifications ==========
         function showToast(message, type = 'info') {
@@ -992,7 +1140,6 @@
                 toast.classList.remove('show');
             }, 4000);
         }
-
         window.showToast = showToast;
 
         // ========== دالة فتح واتساب مع رقم المحفظة ==========
@@ -1006,57 +1153,17 @@
             }
         };
 
-        // ========== المنتجات ==========
+        // ========== المنتجات (فارغة) ==========
         let allProducts = {
-            pubg: [
-                { id: "pubg_60", name: "🎯 60 شدة", price: 4000, category: "pubg", isActive: true },
-                { id: "pubg_120", name: "🎯 120 شدة", price: 8000, category: "pubg", isActive: true },
-                { id: "pubg_180", name: "🎯 180 شدة", price: 12000, category: "pubg", isActive: true },
-                { id: "pubg_240", name: "🎯 240 شدة", price: 16000, category: "pubg", isActive: true },
-                { id: "pubg_325", name: "🎯 325 شدة", price: 20000, category: "pubg", isActive: true }
-            ],
-            freefire: [
-                { id: "ff_110", name: "💎 110 جوهرة", price: 4500, category: "freefire", isActive: true },
-                { id: "ff_231", name: "💎 231 جوهرة", price: 9000, category: "freefire", isActive: true },
-                { id: "ff_583", name: "💎 583 جوهرة", price: 23000, category: "freefire", isActive: true },
-                { id: "ff_1180", name: "💎 1180 جوهرة", price: 50000, category: "freefire", isActive: true }
-            ],
-            clash: [
-                { id: "clash_gold_first", name: "🎫 التذكرة الذهبية (أول مرة)", price: 10000, category: "clash", isActive: true },
-                { id: "clash_gold", name: "🎫 التذكرة الذهبية", price: 27000, category: "clash", isActive: true }
-            ],
-            efootball: [
-                { id: "ef_130", name: "⚽ 130 كوينز", price: 6500, category: "efootball", isActive: true },
-                { id: "ef_300", name: "⚽ 300 كوينز", price: 15000, category: "efootball", isActive: true },
-                { id: "ef_550", name: "⚽ 550 كوينز", price: 27000, category: "efootball", isActive: true },
-                { id: "ef_750", name: "⚽ 750 كوينز", price: 37000, category: "efootball", isActive: true },
-                { id: "ef_morino", name: "⚽ مجموعة مورينو + 150 كوينز", price: 28000, category: "efootball", isActive: true }
-            ],
-            netflix: [
-                { id: "netflix_standard_ads", name: "🎬 نتفليكس Standard + إعلانات", price: 55000, category: "netflix",
-                    isActive: true },
-                { id: "netflix_standard", name: "🎬 نتفليكس Standard بدون إعلانات", price: 120000, category: "netflix",
-                    isActive: true }
-            ],
-            googleplay: [
-                { id: "gp_5", name: "🛍️ بطاقة جوجل بلاي 5$", price: 30000, category: "googleplay", isActive: true },
-                { id: "gp_10", name: "🛍️ بطاقة جوجل بلاي 10$", price: 60000, category: "googleplay", isActive: true }
-            ],
-            redotpay: [
-                { id: "redot_verified", name: "💳 حساب Redotpay موثق", price: 120000, category: "redotpay", isActive: true },
-                { id: "redot_verified_card", name: "💳 حساب موثق + فيزا Redotpay", price: 180000, category: "redotpay",
-                    isActive: true }
-            ],
-            tiktok: [
-                { id: "tt_114", name: "🎵 114 عملة تيك توك", price: 6000, category: "tiktok", isActive: true },
-                { id: "tt_447", name: "🎵 447 عملة تيك توك", price: 30000, category: "tiktok", isActive: true },
-                { id: "tt_897", name: "🎵 897 عملة تيك توك", price: 60000, category: "tiktok", isActive: true }
-            ],
-            ai: [
-                { id: "ai_chatgpt_plus", name: "🤖 ChatGPT Plus - شهر", price: 120000, category: "ai", isActive: true },
-                { id: "ai_chatgpt_go", name: "🤖 ChatGPT Go - شهر", price: 45000, category: "ai", isActive: true },
-                { id: "ai_gemini", name: "🤖 Gemini Pro - شهر", price: 75000, category: "ai", isActive: true }
-            ]
+            pubg: [],
+            freefire: [],
+            clash: [],
+            efootball: [],
+            netflix: [],
+            googleplay: [],
+            redotpay: [],
+            tiktok: [],
+            ai: []
         };
 
         async function saveProductsToFirestore() {
@@ -1091,7 +1198,6 @@
             } catch (e) {
                 console.error("Error loading products:", e);
             }
-            allProductsData = allProducts;
             renderAllProducts();
         }
 
@@ -1172,7 +1278,12 @@
                         realName,
                         whatsapp,
                         status: 'قيد الانتظار',
-                        timestamp: serverTimestamp()
+                        statusHistory: [{
+                            status: 'قيد الانتظار',
+                            timestamp: serverTimestamp()
+                        }],
+                        timestamp: serverTimestamp(),
+                        updatedAt: serverTimestamp()
                     };
                     const orderRef = doc(collection(db, "orders"));
                     transaction.set(orderRef, orderData);
@@ -1193,6 +1304,11 @@
                 const grid = document.getElementById(`${cat}Grid`);
                 if (!grid) return;
                 const products = allProducts[cat]?.filter(p => p.isActive !== false) || [];
+                if (products.length === 0) {
+                    grid.innerHTML =
+                        '<p class="text-dark-light text-center py-8">📦 لا توجد منتجات حالياً. سيتم إضافتها قريباً.</p>';
+                    return;
+                }
                 grid.innerHTML = products.map(p => `
                             <div class="product-card p-5 text-dark text-center" onclick="window.showOrderModal('${p.name}', ${p.price}, '${p.category}', '${p.id}')">
                                 <p class="font-bold text-lg">${p.name}</p>
@@ -1288,13 +1404,11 @@
                     products.push({ ...p, id: doc.id });
                 });
 
-                // بحث
                 const searchTerm = document.getElementById('searchProduct')?.value?.toLowerCase() || '';
                 if (searchTerm) {
                     products = products.filter(p => p.name.toLowerCase().includes(searchTerm));
                 }
 
-                // ترتيب
                 const sortBy = document.getElementById('sortProducts')?.value || 'name';
                 if (sortBy === 'price-low') products.sort((a, b) => a.price - b.price);
                 else if (sortBy === 'price-high') products.sort((a, b) => b.price - a.price);
@@ -1402,7 +1516,7 @@
                                         <img src="${user.img || 'https://via.placeholder.com/40'}" class="w-10 h-10 rounded-full border-2 border-yellow-500">
                                         <div>
                                             <p class="text-dark font-bold">${user.name || 'مستخدم'}</p>
-                                            <p class="text-dark-light text-xs">${user.email || 'لا يوجد بريد'}</p>
+                                            <p class="text-dark-light text-xs">${user.email || user.phone || 'لا يوجد'}</p>
                                         </div>
                                     </div>
                                     <div class="text-left">
@@ -1424,6 +1538,7 @@
                     document.getElementById('userDetailContent').innerHTML = `
                                 <p><strong>👤 الاسم:</strong> ${user.name || 'غير محدد'}</p>
                                 <p><strong>📧 البريد:</strong> ${user.email || 'غير محدد'}</p>
+                                <p><strong>📱 الجوال:</strong> ${user.phone || 'غير محدد'}</p>
                                 <p><strong>💰 الرصيد:</strong> ${(user.balance || 0).toLocaleString()} ج.س</p>
                                 <p><strong>📱 رقم المحفظة:</strong> #${user.walletID || '000000'}</p>
                                 <p><strong>🆔 معرف المستخدم:</strong> ${userId}</p>
@@ -1487,28 +1602,37 @@
         }
 
         function loadAdminOrders() {
-            onSnapshot(query(collection(db, "orders"), where("status", "==", "قيد الانتظار"), orderBy("timestamp",
-                "desc")), (snap) => {
+            onSnapshot(query(collection(db, "orders"), orderBy("timestamp", "desc")), (snap) => {
                 const list = document.getElementById('adminOrdersList');
                 list.innerHTML = '';
                 if (snap.empty) {
-                    list.innerHTML = '<p class="text-dark-light text-center">لا توجد طلبات معلقة</p>';
+                    list.innerHTML = '<p class="text-dark-light text-center">لا توجد طلبات</p>';
                     return;
                 }
                 snap.forEach(d => {
                     const o = d.data();
+                    const statusClass = {
+                        'قيد الانتظار': 'pending',
+                        'جاري المعالجة': 'processing',
+                        'تم الشحن': 'shipped',
+                        'مكتمل': 'completed',
+                        'فشل': 'failed'
+                    } [o.status] || 'pending';
                     list.innerHTML += `
                                 <div class="bg-white/50 p-3 rounded-xl">
                                     <div class="flex justify-between flex-wrap">
                                         <p class="font-bold text-dark">${o.product}</p>
-                                        <span class="text-yellow-dark text-xs">${o.timestamp?.toDate ? new Date(o.timestamp.toDate()).toLocaleString() : 'الآن'}</span>
+                                        <span class="order-status ${statusClass}">${o.status}</span>
                                     </div>
                                     <p class="text-sm text-dark-light">👤 ${o.uName} | 🆔 ${o.gameID}</p>
                                     <p class="text-sm text-dark-light">📱 واتساب: ${o.whatsapp || 'غير محدد'}</p>
+                                    <p class="text-xs text-dark-light">📅 ${o.timestamp?.toDate ? new Date(o.timestamp.toDate()).toLocaleString() : 'الآن'}</p>
                                     <div class="flex gap-2 mt-2 flex-wrap">
-                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'مكتمل')" class="bg-green-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-green-600">✅ تم الشحن</button>
+                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'جاري المعالجة')" class="bg-blue-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-blue-600">⚙️ معالجة</button>
+                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'تم الشحن')" class="bg-purple-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-purple-600">📦 شحن</button>
+                                        <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'مكتمل')" class="bg-green-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-green-600">✅ مكتمل</button>
                                         <button onclick="updateOrderStatus('${d.id}', '${o.uID}', 'فشل', ${o.price})" class="bg-red-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-red-600">❌ إلغاء</button>
-                                        <button onclick="showOrderDetails('${d.id}')" class="bg-blue-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-blue-600">📄 تفاصيل</button>
+                                        <button onclick="showOrderDetails('${d.id}')" class="bg-yellow-500 text-white px-3 py-1 rounded-lg text-xs font-bold hover:bg-yellow-600">📄 تفاصيل</button>
                                     </div>
                                 </div>
                             `;
@@ -1520,7 +1644,18 @@
             if (status === 'فشل' && refundAmount > 0) {
                 await updateDoc(doc(db, "users", userId), { balance: increment(refundAmount) });
             }
-            await updateDoc(doc(db, "orders", orderId), { status: status });
+            const orderRef = doc(db, "orders", orderId);
+            const orderSnap = await getDoc(orderRef);
+            const currentHistory = orderSnap.data()?.statusHistory || [];
+            currentHistory.push({
+                status: status,
+                timestamp: serverTimestamp()
+            });
+            await updateDoc(orderRef, {
+                status: status,
+                statusHistory: currentHistory,
+                updatedAt: serverTimestamp()
+            });
             showToast(`✅ تم تحديث الطلب إلى ${status}`, 'success');
         };
 
@@ -1528,6 +1663,43 @@
             const orderSnap = await getDoc(doc(db, "orders", orderId));
             if (orderSnap.exists()) {
                 const o = orderSnap.data();
+                let trackingHtml = '';
+                if (o.statusHistory && o.statusHistory.length > 0) {
+                    trackingHtml = '<div class="tracking-timeline mt-3">';
+                    const statusLabels = {
+                        'قيد الانتظار': '⏳ قيد الانتظار',
+                        'جاري المعالجة': '⚙️ جاري المعالجة',
+                        'تم الشحن': '📦 تم الشحن',
+                        'مكتمل': '✅ مكتمل',
+                        'فشل': '❌ فشل'
+                    };
+                    const statuses = ['قيد الانتظار', 'جاري المعالجة', 'تم الشحن', 'مكتمل'];
+                    let found = false;
+                    statuses.forEach(s => {
+                        const step = o.statusHistory.find(h => h.status === s);
+                        const isActive = o.status === s;
+                        const isCompleted = o.statusHistory.some(h => h.status === s);
+                        const className = isCompleted ? 'completed' : (isActive ? 'active' : '');
+                        const label = statusLabels[s] || s;
+                        const time = step?.timestamp?.toDate ? new Date(step.timestamp.toDate()).toLocaleString() :
+                            '';
+                        trackingHtml += `
+                                    <div class="tracking-step ${className}">
+                                        <div class="step-label">${label}</div>
+                                        ${time ? `<div class="step-time">${time}</div>` : ''}
+                                    </div>
+                                `;
+                    });
+                    if (o.status === 'فشل') {
+                        trackingHtml += `
+                                    <div class="tracking-step active">
+                                        <div class="step-label text-red-600">❌ فشل</div>
+                                        <div class="step-time">${o.updatedAt?.toDate ? new Date(o.updatedAt.toDate()).toLocaleString() : ''}</div>
+                                    </div>
+                                `;
+                    }
+                    trackingHtml += '</div>';
+                }
                 document.getElementById('orderDetailContent').innerHTML = `
                             <p><strong>المنتج:</strong> ${o.product}</p>
                             <p><strong>السعر:</strong> ${o.price} ج.س</p>
@@ -1536,7 +1708,8 @@
                             <p><strong>اسم اللاعب:</strong> ${o.gameName}</p>
                             <p><strong>الاسم الحقيقي:</strong> ${o.realName}</p>
                             <p><strong>رقم واتساب:</strong> ${o.whatsapp || 'غير محدد'}</p>
-                            <p><strong>الحالة:</strong> ${o.status}</p>
+                            <p><strong>الحالة:</strong> <span class="order-status ${o.status === 'مكتمل' ? 'completed' : o.status === 'فشل' ? 'failed' : 'pending'}">${o.status}</span></p>
+                            ${trackingHtml}
                         `;
                 document.getElementById('orderDetailModal').classList.remove('hidden');
             }
@@ -1627,11 +1800,44 @@
                 }
                 snap.forEach(d => {
                     const o = d.data();
-                    const config = o.status === 'مكتمل' ? { color: 'text-green-600', icon: '✅' } : o.status ===
-                        'فشل' ? { color: 'text-red-600', icon: '❌' } : { color: 'text-yellow-dark',
-                        icon: '⏳' };
-                    list.innerHTML +=
-                        `<div class="glass p-4 rounded-2xl"><div class="flex justify-between"><div><span class="text-2xl">${config.icon}</span><p class="font-bold text-dark">${o.product}</p><p class="text-xs text-dark-light">🆔 ${o.gameID}</p></div><span class="px-2 py-1 rounded-full text-xs ${config.color} bg-black/5">${o.status}</span></div><div class="grid grid-cols-2 gap-2 mt-3 text-sm"><div class="text-dark">💰 ${o.price.toLocaleString()} ج.س</div><div class="text-dark">📱 ${o.whatsapp || 'غير محدد'}</div></div></div>`;
+                    const statusClass = {
+                        'قيد الانتظار': 'pending',
+                        'جاري المعالجة': 'processing',
+                        'تم الشحن': 'shipped',
+                        'مكتمل': 'completed',
+                        'فشل': 'failed'
+                    } [o.status] || 'pending';
+                    const statusIcon = {
+                        'قيد الانتظار': '⏳',
+                        'جاري المعالجة': '⚙️',
+                        'تم الشحن': '📦',
+                        'مكتمل': '✅',
+                        'فشل': '❌'
+                    } [o.status] || '⏳';
+                    const date = o.timestamp?.toDate ? new Date(o.timestamp.toDate()).toLocaleString() : 'الآن';
+                    list.innerHTML += `
+                                <div class="glass p-4 rounded-2xl">
+                                    <div class="flex justify-between items-start flex-wrap">
+                                        <div>
+                                            <p class="font-bold text-dark">${o.product}</p>
+                                            <p class="text-xs text-dark-light">🆔 ${o.gameID}</p>
+                                        </div>
+                                        <div class="text-left">
+                                            <span class="order-status ${statusClass}">${statusIcon} ${o.status}</span>
+                                            <p class="text-xs text-dark-light mt-1">${date}</p>
+                                        </div>
+                                    </div>
+                                    <div class="grid grid-cols-2 gap-2 mt-3 text-sm">
+                                        <div class="text-dark">💰 ${o.price.toLocaleString()} ج.س</div>
+                                        <div class="text-dark">📱 ${o.whatsapp || 'غير محدد'}</div>
+                                    </div>
+                                    ${o.statusHistory && o.statusHistory.length > 1 ? `
+                                        <button onclick="showOrderDetails('${d.id}')" class="mt-2 text-xs text-yellow-dark hover:text-yellow-600 font-bold">
+                                            📋 عرض التتبع
+                                        </button>
+                                    ` : ''}
+                                </div>
+                            `;
                 });
             });
         }
@@ -1653,6 +1859,14 @@
         };
         window.closePolicyModal = () => document.getElementById('policy-modal').classList.add('hidden');
         window.closeOrderDetailModal = () => document.getElementById('orderDetailModal').classList.add('hidden');
+
+        // ========== الأسئلة الشائعة ==========
+        window.showFAQ = () => {
+            document.getElementById('faq-modal').classList.remove('hidden');
+        };
+        window.closeFAQModal = () => {
+            document.getElementById('faq-modal').classList.add('hidden');
+        };
 
         // ========== عن المتجر ==========
         window.showAbout = () => {
@@ -1678,6 +1892,7 @@
         };
 
         // ========== أحداث تسجيل الدخول ==========
+        // تسجيل بالبريد
         document.getElementById('email-login-btn').onclick = async () => {
             const email = document.getElementById('login-email').value;
             const pwd = document.getElementById('login-password').value;
@@ -1686,7 +1901,13 @@
                 await signInWithEmailAndPassword(auth, email, pwd);
                 showToast('✅ تم تسجيل الدخول بنجاح', 'success');
             } catch (e) {
-                showToast('❌ البريد الإلكتروني أو كلمة المرور غير صحيحة', 'error');
+                if (e.code === 'auth/user-not-found') {
+                    showToast('❌ البريد الإلكتروني غير مسجل', 'error');
+                } else if (e.code === 'auth/wrong-password') {
+                    showToast('❌ كلمة المرور غير صحيحة', 'error');
+                } else {
+                    showToast('❌ ' + e.message, 'error');
+                }
             }
         };
 
@@ -1701,6 +1922,7 @@
             }
         };
 
+        // إنشاء حساب بالبريد
         document.getElementById('email-register-btn').onclick = async () => {
             const name = document.getElementById('reg-name').value.trim();
             const email = document.getElementById('reg-email').value.trim();
@@ -1708,26 +1930,122 @@
             const confirmPwd = document.getElementById('reg-confirm-password').value;
 
             if (!name || !email || !pwd || !confirmPwd) { showToast('❌ جميع الحقول مطلوبة', 'error'); return; }
-            if (pwd.length < 6) { showToast('❌ كلمة المرور يجب أن تكون 6 أحرف على الأقل', 'error'); return; }
+
+            // تحقق صيغة الإيميل
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) { showToast('❌ البريد الإلكتروني غير صحيح', 'error'); return; }
+
+            if (pwd.length < 8) { showToast('❌ كلمة المرور يجب أن تكون 8 أحرف على الأقل', 'error'); return; }
+            if (!/[0-9]/.test(pwd)) { showToast('❌ كلمة المرور يجب أن تحتوي على رقم واحد على الأقل', 'error'); return; }
             if (pwd !== confirmPwd) { showToast('❌ كلمة المرور غير متطابقة مع التأكيد', 'error'); return; }
 
             try {
                 const cred = await createUserWithEmailAndPassword(auth, email, pwd);
                 const walletID = Math.floor(100000 + Math.random() * 900000).toString();
+
+                // إرسال تأكيد البريد
+                await sendEmailVerification(cred.user);
+                showToast('📧 تم إرسال رابط التأكيد إلى بريدك. يرجى تأكيد البريد لتتمكن من الدخول.', 'info');
+
                 await setDoc(doc(db, "users", cred.user.uid), {
                     name: name,
                     email: email,
                     img: 'https://via.placeholder.com/100',
                     walletID: walletID,
                     balance: 0,
+                    emailVerified: false,
                     createdAt: serverTimestamp()
                 });
                 showToast(`✅ تم إنشاء الحساب بنجاح!\nرقم محفظتك: #${walletID}`, 'success');
             } catch (e) {
-                showToast('❌ البريد الإلكتروني مستخدم بالفعل', 'error');
+                if (e.code === 'auth/email-already-in-use') {
+                    showToast('❌ البريد الإلكتروني مستخدم بالفعل', 'error');
+                } else {
+                    showToast('❌ ' + e.message, 'error');
+                }
             }
         };
 
+        // تسجيل برقم الجوال
+        let recaptchaPhoneVerifier = null;
+
+        document.getElementById('phone-login-btn').onclick = async () => {
+            const phoneNumber = document.getElementById('phone-number').value.trim();
+            if (!phoneNumber) { showToast('❌ الرجاء إدخال رقم الجوال', 'error'); return; }
+
+            // تحقق من صيغة الرقم
+            const phoneRegex = /^[0-9]{10,15}$/;
+            if (!phoneRegex.test(phoneNumber)) { showToast('❌ رقم الجوال غير صحيح (10-15 رقم)', 'error'); return; }
+
+            try {
+                // إضافة 249 للسودان إذا لم يبدأ بالرقم الدولي
+                let formattedPhone = phoneNumber;
+                if (!phoneNumber.startsWith('+')) {
+                    if (phoneNumber.startsWith('0')) {
+                        formattedPhone = '+249' + phoneNumber.substring(1);
+                    } else {
+                        formattedPhone = '+249' + phoneNumber;
+                    }
+                }
+
+                if (!recaptchaPhoneVerifier) {
+                    recaptchaPhoneVerifier = new RecaptchaVerifier('recaptcha-phone-container', {
+                        'size': 'invisible',
+                        'callback': () => {}
+                    }, auth);
+                }
+
+                const result = await signInWithPhoneNumber(auth, formattedPhone, recaptchaPhoneVerifier);
+                phoneConfirmationResult = result;
+                document.getElementById('phone-verification').classList.remove('hidden');
+                showToast('✅ تم إرسال رمز التفعيل إلى جوالك', 'success');
+            } catch (e) {
+                showToast('❌ ' + e.message, 'error');
+                console.error(e);
+            }
+        };
+
+        document.getElementById('phone-verify-btn').onclick = async () => {
+            const otp = document.getElementById('phone-otp').value.trim();
+            if (!otp) { showToast('❌ الرجاء إدخال رمز التفعيل', 'error'); return; }
+
+            try {
+                const result = await phoneConfirmationResult.confirm(otp);
+                const user = result.user;
+                const userRef = doc(db, "users", user.uid);
+                const userSnap = await getDoc(userRef);
+
+                if (!userSnap.exists()) {
+                    const walletID = Math.floor(100000 + Math.random() * 900000).toString();
+                    await setDoc(userRef, {
+                        name: user.displayName || 'مستخدم',
+                        email: user.email || '',
+                        phone: user.phoneNumber,
+                        img: user.photoURL || 'https://via.placeholder.com/100',
+                        walletID: walletID,
+                        balance: 0,
+                        createdAt: serverTimestamp()
+                    });
+                    showToast(`✅ تم إنشاء حسابك!\nرقم محفظتك: #${walletID}`, 'success');
+                } else {
+                    showToast('✅ تم تسجيل الدخول بنجاح', 'success');
+                }
+                document.getElementById('phone-verification').classList.add('hidden');
+                document.getElementById('phone-otp').value = '';
+            } catch (e) {
+                showToast('❌ رمز التفعيل غير صحيح', 'error');
+            }
+        };
+
+        // تسجيل عبر واتساب
+        document.getElementById('phone-whatsapp-btn').onclick = () => {
+            const phone = document.getElementById('phone-number').value.trim();
+            if (!phone) { showToast('❌ الرجاء إدخال رقم الجوال أولاً', 'error'); return; }
+            const message = `مرحباً، أريد إنشاء حساب في MORRE STORE\nرقم الجوال: ${phone}`;
+            window.open(`https://wa.me/2490991305468?text=${encodeURIComponent(message)}`, '_blank');
+        };
+
+        // تسجيل بجوجل
         document.getElementById('google-login-btn').onclick = async () => {
             try {
                 const result = await signInWithPopup(auth, provider);
@@ -1741,6 +2059,7 @@
                         img: result.user.photoURL || 'https://via.placeholder.com/100',
                         walletID: walletID,
                         balance: 0,
+                        emailVerified: result.user.emailVerified || false,
                         createdAt: serverTimestamp()
                     });
                     showToast(`✅ تم إنشاء حسابك!\nرقم محفظتك: #${walletID}`, 'success');
@@ -1819,6 +2138,35 @@
         document.getElementById('searchProduct')?.addEventListener('input', loadManageProducts);
         document.getElementById('sortProducts')?.addEventListener('change', loadManageProducts);
 
+        // ========== تبديل تبويبات تسجيل الدخول ==========
+        document.querySelectorAll('.auth-tab').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active-tab'));
+                tab.classList.add('active-tab');
+                const target = tab.getAttribute('data-tab');
+                document.getElementById('login-form').style.display = target === 'login' ? 'block' : 'none';
+                document.getElementById('register-form').style.display = target === 'register' ? 'block' : 'none';
+                document.getElementById('phone-form').style.display = target === 'phone' ? 'block' : 'none';
+                if (target === 'phone') {
+                    // تهيئة Recaptcha للجوال
+                    setTimeout(() => {
+                        if (!recaptchaPhoneVerifier) {
+                            try {
+                                recaptchaPhoneVerifier = new RecaptchaVerifier('recaptcha-phone-container', {
+                                    'size': 'invisible',
+                                    'callback': () => {}
+                                }, auth);
+                            } catch (e) { console.error(e); }
+                        }
+                    }, 500);
+                }
+            });
+        });
+        document.getElementById('login-form').style.display = 'block';
+        document.getElementById('register-form').style.display = 'none';
+        document.getElementById('phone-form').style.display = 'none';
+        document.querySelectorAll('.auth-tab')[0].classList.add('active-tab');
+
         // ========== بدء التشغيل ==========
         function startEngine(user) {
             const isAdmin = ADMINS.includes(user.email);
@@ -1851,16 +2199,29 @@
             const authScr = document.getElementById('auth-screen');
             const appScr = document.getElementById('main-app');
             if (user) {
+                // التحقق من تأكيد البريد
+                if (!user.emailVerified && user.email) {
+                    showToast('📧 يرجى تأكيد بريدك الإلكتروني أولاً. تم إرسال رابط التأكيد.', 'info');
+                    await signOut(auth);
+                    loading.classList.add('hidden');
+                    authScr.classList.remove('hidden');
+                    appScr.classList.add('hidden');
+                    return;
+                }
+
                 const userRef = doc(db, "users", user.uid);
                 const userSnap = await getDoc(userRef);
                 if (!userSnap.exists()) {
                     const walletID = Math.floor(100000 + Math.random() * 900000).toString();
                     await setDoc(userRef, {
                         name: user.displayName || user.email?.split('@')[0] || 'مستخدم',
-                        email: user.email,
+                        email: user.email || '',
+                        phone: user.phoneNumber || '',
                         img: user.photoURL || 'https://via.placeholder.com/100',
                         walletID: walletID,
-                        balance: 0
+                        balance: 0,
+                        emailVerified: user.emailVerified || false,
+                        createdAt: serverTimestamp()
                     });
                     showToast(`✨ مرحباً بك في MORRE STORE!\n📱 رقم محفظتك: #${walletID}`, 'success');
                 }
@@ -1874,20 +2235,6 @@
                 appScr.classList.add('hidden');
             }
         });
-
-        document.querySelectorAll('.auth-tab').forEach(tab => {
-            tab.addEventListener('click', () => {
-                document.querySelectorAll('.auth-tab').forEach(t => t.classList.remove('active-tab'));
-                tab.classList.add('active-tab');
-                const target = tab.getAttribute('data-tab');
-                document.getElementById('login-form').style.display = target === 'login' ? 'block' : 'none';
-                document.getElementById('register-form').style.display = target === 'register' ? 'block' :
-                    'none';
-            });
-        });
-        document.getElementById('login-form').style.display = 'block';
-        document.getElementById('register-form').style.display = 'none';
-        document.querySelectorAll('.auth-tab')[0].classList.add('active-tab');
 
         function isWebView() {
             const ua = navigator.userAgent;
@@ -1907,4 +2254,4 @@
         };
     </script>
 </body>
-                </html>
+    </html>
