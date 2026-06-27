@@ -8,6 +8,7 @@
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
+        /* جميع الأنماط السابقة كما هي */
         @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;600;700;800;900&display=swap');
         * {
             font-family: 'Cairo', sans-serif;
@@ -600,6 +601,24 @@
             font-size: 0.7rem;
             color: #94a3b8;
         }
+        .auth-tab.active-tab {
+            color: #d97706 !important;
+            border-bottom: 2px solid #d97706;
+        }
+        .auth-tab {
+            color: #475569;
+            border-bottom: 2px solid transparent;
+            transition: all 0.3s;
+            cursor: pointer;
+        }
+        .auth-tab:hover {
+            color: #1e293b;
+        }
+        #login-form,
+        #register-form,
+        #phone-form {
+            transition: all 0.3s ease;
+        }
     </style>
 </head>
 <body>
@@ -628,11 +647,11 @@
             </h1>
             <p class="text-center text-dark-light text-sm mb-6">متجر شامل للخدمات الرقمية</p>
             <div class="flex gap-2 border-b border-dark/10 mb-6 overflow-x-auto">
-                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light whitespace-nowrap active-tab" data-tab="login">تسجيل دخول</button>
-                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light whitespace-nowrap" data-tab="register">إنشاء حساب</button>
-                <button class="auth-tab flex-1 py-2 text-center font-bold text-dark-light whitespace-nowrap" data-tab="phone">تسجيل برقم الجوال</button>
+                <button class="auth-tab flex-1 py-2 text-center font-bold whitespace-nowrap active-tab" data-tab="login">تسجيل دخول</button>
+                <button class="auth-tab flex-1 py-2 text-center font-bold whitespace-nowrap" data-tab="register">إنشاء حساب</button>
+                <button class="auth-tab flex-1 py-2 text-center font-bold whitespace-nowrap" data-tab="phone">تسجيل برقم الجوال</button>
             </div>
-            
+
             <!-- تسجيل دخول بالبريد -->
             <div id="login-form" class="space-y-4">
                 <input type="email" id="login-email" placeholder="البريد الإلكتروني" dir="ltr">
@@ -640,7 +659,7 @@
                 <button id="email-login-btn" class="w-full action-btn">تسجيل الدخول</button>
                 <button id="forgot-password-btn" class="w-full text-sm text-yellow-dark hover:text-yellow-600 font-bold">نسيت كلمة المرور؟</button>
             </div>
-            
+
             <!-- إنشاء حساب -->
             <div id="register-form" class="space-y-4 hidden">
                 <input type="text" id="reg-name" placeholder="الاسم الكامل">
@@ -649,7 +668,7 @@
                 <input type="password" id="reg-confirm-password" placeholder="تأكيد كلمة المرور" dir="ltr">
                 <button id="email-register-btn" class="w-full action-btn">إنشاء حساب</button>
             </div>
-            
+
             <!-- تسجيل برقم الجوال -->
             <div id="phone-form" class="space-y-4 hidden">
                 <div id="phone-auth-container">
@@ -665,7 +684,7 @@
                     <i class="fab fa-whatsapp text-green-500"></i> تسجيل عبر واتساب
                 </button>
             </div>
-            
+
             <div class="relative my-6"><div class="absolute inset-0 flex items-center"><div class="w-full border-t border-dark/10"></div></div><div class="relative flex justify-center text-xs"><span class="bg-white/60 px-2 text-dark-light">أو</span></div></div>
             <button id="google-login-btn" class="w-full bg-white text-gray-800 py-3 rounded-xl font-bold flex items-center justify-center gap-2 border border-gray-200"><i class="fab fa-google"></i> دخول عبر جوجل</button>
         </div>
@@ -1079,6 +1098,40 @@
         const auth = getAuth(app);
         const provider = new GoogleAuthProvider();
 
+        // ========== تهيئة RecaptchaVerifier بشكل صحيح ==========
+        let recaptchaVerifier = null;
+
+        function initializeRecaptcha() {
+            try {
+                const container = document.getElementById('recaptcha-phone-container');
+                if (!container) {
+                    console.warn('⚠️ recaptcha-phone-container not found');
+                    return null;
+                }
+                if (!recaptchaVerifier) {
+                    recaptchaVerifier = new RecaptchaVerifier('recaptcha-phone-container', {
+                        'size': 'invisible',
+                        'callback': () => {
+                            console.log('✅ reCAPTCHA solved');
+                        },
+                        'expired-callback': () => {
+                            console.log('⚠️ reCAPTCHA expired');
+                            recaptchaVerifier = null;
+                            setTimeout(initializeRecaptcha, 1000);
+                        }
+                    }, auth);
+                    console.log('✅ RecaptchaVerifier initialized');
+                }
+                return recaptchaVerifier;
+            } catch (e) {
+                console.error('❌ Recaptcha init error:', e);
+                return null;
+            }
+        }
+
+        // تهيئة Recaptcha تلقائياً بعد تحميل الصفحة
+        setTimeout(initializeRecaptcha, 1500);
+
         const TELEGRAM_TOKEN = '8616731804:AAGjZzVbWV7DXasmlwjjCyhz3AYUmzGbyi8';
         const TELEGRAM_CHAT_ID = '8539810117';
         const ADMINS = ["mhmdfthu98@gmail.com"];
@@ -1087,7 +1140,6 @@
         let currentOrder = null;
         let editingProductId = null;
         let phoneConfirmationResult = null;
-        let recaptchaPhoneVerifier = null;
 
         // ========== Toast Notifications ==========
         function showToast(message, type = 'info') {
@@ -1939,28 +1991,14 @@
                     }
                 }
 
-                // تأكد من وجود عنصر recaptcha-phone-container
-                const container = document.getElementById('recaptcha-phone-container');
-                if (!container) {
-                    showToast('❌ خطأ في تهيئة التحقق', 'error');
+                // تهيئة RecaptchaVerifier
+                const verifier = initializeRecaptcha();
+                if (!verifier) {
+                    showToast('❌ خطأ في تهيئة التحقق. حاول مرة أخرى.', 'error');
                     return;
                 }
 
-                // تهيئة RecaptchaVerifier بشكل صحيح
-                if (!recaptchaPhoneVerifier) {
-                    recaptchaPhoneVerifier = new RecaptchaVerifier('recaptcha-phone-container', {
-                        'size': 'invisible',
-                        'callback': () => {
-                            console.log('reCAPTCHA solved');
-                        },
-                        'expired-callback': () => {
-                            console.log('reCAPTCHA expired');
-                            recaptchaPhoneVerifier = null;
-                        }
-                    }, auth);
-                }
-
-                const result = await signInWithPhoneNumber(auth, formattedPhone, recaptchaPhoneVerifier);
+                const result = await signInWithPhoneNumber(auth, formattedPhone, verifier);
                 phoneConfirmationResult = result;
                 document.getElementById('phone-verification').classList.remove('hidden');
                 showToast('✅ تم إرسال رمز التفعيل إلى جوالك', 'success');
@@ -1970,11 +2008,13 @@
                     showToast('❌ رقم الجوال غير صحيح', 'error');
                 } else if (e.code === 'auth/too-many-requests') {
                     showToast('❌ تم إرسال العديد من الرموز. حاول لاحقاً.', 'error');
+                } else if (e.code === 'auth/app-verification-disabled-for-testing') {
+                    showToast('❌ وضع الاختبار غير مفعل. يرجى تفعيل Phone في Firebase.', 'error');
                 } else {
                     showToast('❌ ' + (e.message || 'حدث خطأ في إرسال الرمز'), 'error');
                 }
                 // إعادة تهيئة Recaptcha في حالة الفشل
-                recaptchaPhoneVerifier = null;
+                recaptchaVerifier = null;
             }
         };
 
@@ -2005,8 +2045,7 @@
                 }
                 document.getElementById('phone-verification').classList.add('hidden');
                 document.getElementById('phone-otp').value = '';
-                // تنظيف الـ recaptcha
-                recaptchaPhoneVerifier = null;
+                recaptchaVerifier = null;
             } catch (e) {
                 if (e.code === 'auth/invalid-verification-code') {
                     showToast('❌ رمز التفعيل غير صحيح', 'error');
@@ -2134,19 +2173,7 @@
                 document.getElementById('register-form').style.display = target === 'register' ? 'block' : 'none';
                 document.getElementById('phone-form').style.display = target === 'phone' ? 'block' : 'none';
                 if (target === 'phone') {
-                    setTimeout(() => {
-                        if (!recaptchaPhoneVerifier) {
-                            try {
-                                recaptchaPhoneVerifier = new RecaptchaVerifier('recaptcha-phone-container', {
-                                    'size': 'invisible',
-                                    'callback': () => {},
-                                    'expired-callback': () => {
-                                        recaptchaPhoneVerifier = null;
-                                    }
-                                }, auth);
-                            } catch (e) { console.error(e); }
-                        }
-                    }, 500);
+                    setTimeout(initializeRecaptcha, 500);
                 }
             });
         });
@@ -2241,4 +2268,4 @@
         };
     </script>
 </body>
-                                                       </html>
+                                </html>
